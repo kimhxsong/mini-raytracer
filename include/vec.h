@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vec.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 16:39:44 by yookim            #+#    #+#             */
-/*   Updated: 2022/01/03 17:44:52 by yookim           ###   ########.fr       */
+/*   Updated: 2022/01/03 18:22:11 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ struct s_coordinates {
 };
 
 struct s_vec {
-	float	x;
-	float	y;
-	float	z;
+	float	i;
+	float	j;
+	float	k;
 };
 
 t_vec	vec_plus(t_vec *vec, t_vec *vec2);
