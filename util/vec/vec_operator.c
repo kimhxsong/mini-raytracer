@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vec_operator.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 17:13:51 by yookim            #+#    #+#             */
-/*   Updated: 2022/01/06 20:16:40 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/06 23:02:12 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ t_vec	vec_plus(t_vec vec1, t_vec vec2)
 	t_vec	vec;
 
 	vec.i = vec1.i + vec2.i;
-	vec.j = vec2.j + vec2.j;
-	vec.k = vec2.k + vec2.k;
+	vec.j = vec1.j + vec2.j;
+	vec.k = vec1.k + vec2.k;
 	return (vec);
 }
 
@@ -27,8 +27,8 @@ t_vec	vec_minus(t_vec vec1, t_vec vec2)
 	t_vec	vec;
 
 	vec.i = vec1.i - vec2.i;
-	vec.j = vec2.j - vec2.j;
-	vec.k = vec2.k - vec2.k;
+	vec.j = vec1.j - vec2.j;
+	vec.k = vec1.k - vec2.k;
 	return (vec);
 }
 
