@@ -6,7 +6,7 @@
 #    By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/03 14:45:59 by hyeonsok          #+#    #+#              #
-#    Updated: 2022/01/03 15:25:20 by hyeonsok         ###   ########.fr        #
+#    Updated: 2022/01/06 16:14:30 by hyeonsok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,9 +20,12 @@ LIBS = $(MLX)
 
 SRCDIR := ./src
 UTILDIR := ./util
+UTIL_MLX_DIR := ./util/mlx
+UTIL_VEC_DIR := ./util/vec
+
 OBJDIR := ./obj
 OBJS	= $(addprefix $(OBJDIR)/, \
-			main.o)
+			main.o mlx_img_init.o)
 
 NAME = miniRT
 
@@ -34,6 +37,15 @@ mlx:
 			make -C ./lib/minilibx_opengl_20191021/
 
 $(OBJDIR)/%.o : $(SRCDIR)/%.c
+			$(CC) $(INCLUDES) $(LIBS) $(CFLAGS) -c $< -o $@
+
+$(OBJDIR)/%.o : $(UTILDIR)/%.c
+			$(CC) $(INCLUDES) $(LIBS) $(CFLAGS) -c $< -o $@
+
+$(OBJDIR)/%.o : $(UTIL_MLX_DIR)/%.c
+			$(CC) $(INCLUDES) $(LIBS) $(CFLAGS) -c $< -o $@
+
+$(OBJDIR)/%.o : $(UTIL_VEC_DIR)/%.c
 			$(CC) $(INCLUDES) $(LIBS) $(CFLAGS) -c $< -o $@
 
 .PHONY:		NAME
