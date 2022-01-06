@@ -6,7 +6,7 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 19:46:01 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/05 17:54:02 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/06 17:14:24 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,24 @@
 
 #include "minirt.h"
 
-typedef struct s_cam t_cam;
+typedef struct s_cam    t_cam;
 typedef struct s_view   t_view;
 
 struct s_cam {
     t_vec           origin;
     t_vec           dir;
-    t_vec           basis[3];
-    t_vec           up;
+    const t_vec     up;
     float           fov;
-    float           focus_len;
+    float           focal_len;
+    t_vec           basis_i;
+    t_vec           basis_j;
+    t_vec           basis_k;
 };
 
 struct s_view {
-    t_vec           center;
     int             width;
     int             height;
-    int             **image;
+    t_vec           **image;
 };
 
 #endif

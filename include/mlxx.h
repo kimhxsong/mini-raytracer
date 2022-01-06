@@ -6,7 +6,7 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 14:42:29 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/03 15:22:20 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/06 17:09:21 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,19 @@ typedef struct s_mlx	t_mlx;
 typedef struct s_color	t_color;
 typedef struct s_img	t_img;
 
-struct s_mlx {
-	void	*mlx_ptr;
-	void	*win_ptr;
-	int		win_width;
-	int		win_height;
-	t_img	*img_ptr;
-};
-
-struct t_img {
-	void	*image;
-	char	*address;
-	int		bits_per_pixel;
-	int		line_length;
+struct s_img {
+	void	*ptr;
+	char	*addr;
+	int		bpp;
+	int		width;
 	int		endian;
 };
 
+struct s_win {
+	void	*ptr;
+	int		width;
+	int		height;
+}
 struct t_color {
 	float	t;
 	float	r;
