@@ -6,7 +6,7 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 14:11:56 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/07 14:30:24 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/07 18:02:48 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	alloc_view(t_cam *cam, double width, double height)
 
 	cam->view.matrix = (t_vec **)malloc(height * sizeof(t_vec *));
 	i = -1;
-	while (++i < width)
+	while (++i < height)
 		cam->view.matrix[i] = (t_vec *)malloc(width * sizeof(t_vec));
 }
 
