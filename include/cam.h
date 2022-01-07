@@ -6,7 +6,7 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 19:46:01 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/06 20:15:37 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/07 17:45:16 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 #include "vec.h"
 
 typedef struct s_ray    t_ray;
+typedef struct s_view   t_view;
+typedef struct s_cam    t_cam;
+
 struct s_ray {
     t_vec   origin;
     t_vec   dir;
@@ -27,14 +30,12 @@ struct s_ray {
     t_vec   basis_k;
 };
 
-typedef struct s_view   t_view;
 struct s_view {
     double   width;
     double   height;
     t_vec   **matrix;
 };
 
-typedef struct s_cam    t_cam;
 struct s_cam {
     t_ray   ray;
     t_view  view;
