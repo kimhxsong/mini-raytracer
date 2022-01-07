@@ -6,23 +6,32 @@
 #    By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/03 14:45:59 by hyeonsok          #+#    #+#              #
-#    Updated: 2022/01/03 15:25:20 by hyeonsok         ###   ########.fr        #
+#    Updated: 2022/01/06 19:59:37 by hyeonsok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 CC = gcc -g3
-# CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra
 
-INCLUDES = -I ./include/ -I ./lib/minilibx_opengl_20191021/
-MLX = -lmlx -L ./lib/minilibx_opengl_20191021/ -framework OpenGL -framework AppKit
+INCLUDES = -I./include/ -I./lib/minilibx_opengl_20191021/
+MLX = -lmlx -framework OpenGL -framework AppKit -L./lib/minilibx_opengl_20191021/
 LIBS = $(MLX)
 
 SRCDIR := ./src
 UTILDIR := ./util
+UTIL_MLX_DIR := ./util/mlx
+UTIL_VEC_DIR := ./util/vec
+
 OBJDIR := ./obj
 OBJS	= $(addprefix $(OBJDIR)/, \
-			main.o)
+			main.o \
+			cam.o \
+			mlx_img_init.o \
+			mlx_img_pixel_put.o \
+			mlx_pixel_color.o \
+			vec_calculate.o \
+			vec_operator.o)
 
 NAME = miniRT
 
@@ -34,7 +43,16 @@ mlx:
 			make -C ./lib/minilibx_opengl_20191021/
 
 $(OBJDIR)/%.o : $(SRCDIR)/%.c
-			$(CC) $(INCLUDES) $(LIBS) $(CFLAGS) -c $< -o $@
+			$(CC) $(INCLUDES) $(CFLAGS) -c $< -o $@
+
+$(OBJDIR)/%.o : $(UTILDIR)/%.c
+			$(CC) $(INCLUDES) $(CFLAGS) -c $< -o $@
+
+$(OBJDIR)/%.o : $(UTIL_MLX_DIR)/%.c
+			$(CC) $(INCLUDES) $(CFLAGS) -c $< -o $@
+
+$(OBJDIR)/%.o : $(UTIL_VEC_DIR)/%.c
+			$(CC) $(INCLUDES) $(CFLAGS) -c $< -o $@
 
 .PHONY:		NAME
 $(NAME):	$(OBJDIR) $(OBJS)

@@ -3,38 +3,56 @@
 /*                                                        :::      ::::::::   */
 /*   vec_operator.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 17:13:51 by yookim            #+#    #+#             */
-/*   Updated: 2022/01/03 18:25:50 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/06 23:02:12 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vec.h"
 
-t_vec	vec_plus(t_vec *vec, t_vec *vec2)
+t_vec	vec_plus(t_vec vec1, t_vec vec2)
 {
-	return ((t_vec){(vec->i + vec2->i, vec->j + vec2->j, vec->k + vec2->k)})
+	t_vec	vec;
+
+	vec.i = vec1.i + vec2.i;
+	vec.j = vec1.j + vec2.j;
+	vec.k = vec1.k + vec2.k;
+	return (vec);
 }
 
-t_vec	vec_minus(t_vec *vec, t_vec *vec2)
+t_vec	vec_minus(t_vec vec1, t_vec vec2)
 {
-	return ((t_vec){(vec->i - vec2->i, vec->j - vec2->j, vec->k - vec2->k)})
+	t_vec	vec;
+
+	vec.i = vec1.i - vec2.i;
+	vec.j = vec1.j - vec2.j;
+	vec.k = vec1.k - vec2.k;
+	return (vec);
 }
 
-t_vec	vec_mult(t_vec *vec, float t)
+t_vec	vec_mult(t_vec vec1, double t)
 {
-	return((t_vec){(t * vec->i, t * vec->j, t * vec->k)});
+	t_vec	vec;
+
+	vec.i = vec1.i * t;
+	vec.j = vec1.j * t;
+	vec.k = vec1.k * t;
+	return (vec);
 }
 
-float	vec_dot(t_vec *vec, t_vec *vec2)
+double	vec_dot(t_vec vec1, t_vec vec2)
 {
-	return(vec->i * vec2->i + vec->j * vec2->j + vec->k * vec2->k)
+	return(vec1.i * vec2.i + vec1.j * vec2.j + vec1.k * vec2.k);
 }
 
-t_vec	vec_cross(t_vec *vec, t_vec *vec2)
+t_vec	vec_cross(t_vec vec1, t_vec vec2)
 {
-	return ((t_vec){(vec->j * vec2->k - vec->k * vec2->j,
-					vec->k * vec2->i - vec->i * vec2->k,
-					vec->i * vec2->j - vec->j * vec2->i)});
+	t_vec	vec;
+
+	vec.i = vec1.j * vec2.k - vec1.k * vec2.j;
+	vec.j = vec1.k * vec2.i - vec1.i * vec2.k;
+	vec.k = vec1.i * vec2.j - vec1.j * vec2.i;
+	return (vec);
 }
