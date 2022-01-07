@@ -1,35 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   event.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/03 14:38:12 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/07 15:55:30 by hyeonsok         ###   ########.fr       */
+/*   Created: 2022/01/07 15:35:25 by hyeonsok          #+#    #+#             */
+/*   Updated: 2022/01/07 15:37:03 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef  MINIRT_H
-# define MINIRT_H
+#ifndef EVENT_H
+# define EVENT_H
 
-#include <stdio.h>
-#include <fcntl.h>
-#include <string.h>
-#include <stdlib.h>
+#include "minirt.h"
 
-#include "mlxx.h"
-#include "vec.h"
-#include "cam.h"
-
-typedef struct s_data   t_data;
-struct s_data {
-	void	*mlx_ptr;
-	t_win	win;
-	t_img	img;
-	t_cam	cam;
-};
-
-#include "event.h"
+void    listen_event(t_data *data);
 
 #endif
