@@ -6,7 +6,7 @@
 /*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 14:35:48 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/07 20:14:31 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/10 16:36:28 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@ int main(int argc, char *argv[])
 {
 	t_data	data;
 	
+	if (validate_argc(argc) || validate_file(argv[1]))
+		return (1);
+
+
 	//setup_mlx; test-assignment
 	data.win.width = 1920;
 	data.win.height = 1080;
