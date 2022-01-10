@@ -6,7 +6,7 @@
 /*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 14:35:48 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/10 16:46:03 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/10 22:38:43 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int main(int argc, char *argv[])
 {
 	t_data	data;
 	
+	memset(&data, 0, sizeof(data));
 	if (validate_argc(argc) || validate_file(argv[1]))
 		return (EXIT_FAILURE);
 	

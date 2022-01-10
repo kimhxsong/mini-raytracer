@@ -6,7 +6,7 @@
 #    By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/03 14:45:59 by hyeonsok          #+#    #+#              #
-#    Updated: 2022/01/10 16:37:05 by hyeonsok         ###   ########.fr        #
+#    Updated: 2022/01/10 21:32:21 by hyeonsok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,8 @@ OBJS	= $(addprefix $(OBJDIR)/, \
 			event.o \
 			validate.o \
 			parse.o \
+			get_next_line.o \
+			split.o \
 			mlx_img_init.o \
 			mlx_img_pixel_put.o \
 			mlx_pixel_color.o \

@@ -6,7 +6,7 @@
 /*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 18:27:41 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/10 16:59:12 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/10 22:49:16 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,140 +14,147 @@
 #include <unistd.h>
 #include "minirt.h"
 
+void	add_object_front(t_obj **first_obj, t_obj *new)
+{
+	if (*first_obj)
+		new->next = *first_obj;
+	*first_obj = new;
+}
+
 void	parse_ambient(t_data *data, char *strv[])
 {
-	puts(strv[0]);
-	// data->ambient.ratio = atof(strv[0]);
-
-	// data->ambient.color.r = atof(strtok(strv[1], ","));
-	// data->ambient.color.g = atof(NULL);
-	// data->ambient.color.b = atof(NULL);
+	data->ambient.ratio = atof(strv[1]);
+	data->ambient.color.t = 0;
+	data->ambient.color.r = atof(strtok(strv[2], ","));
+	data->ambient.color.g = atof(strtok(NULL, ","));
+	data->ambient.color.b = atof(strtok(NULL, ","));
 }
 
 void	parse_light(t_data *data, char *strv[])
 {
-	puts(strv[0]);
-// 	data->light.spot.i = atof(strtok(strv[0], ","));
-// 	data->light.spot.j = atof(strtok(NULL, ","));
-// 	data->light.spot.k = atof(strtok(NULL, ","));
-
-// 	data->light.ratio = atof(strv[1]);
+	data->light.spot.i = atof(strtok(strv[1], ","));
+	data->light.spot.j = atof(strtok(NULL, ","));
+	data->light.spot.k = atof(strtok(NULL, ","));
+	data->light.ratio = atof(strv[2]);
 }
 
 void	parse_camera(t_data *data, char *strv[])
 {
-	puts(strv[0]);
-	// data->cam.ray.origin.i = atof(strtok(strv[0], ","));
-	// data->cam.ray.origin.j = atof(strtok(NULL, ","));
-	// data->cam.ray.origin.k = atof(strtok(NULL, ","));
-
-	// data->cam.ray.dir.i = atof(strtok(strv[1], ","));
-	// data->cam.ray.dir.j = atof(strtok(NULL, ","));
-	// data->cam.ray.dir.k = atof(strtok(NULL, ","));
-	// data->cam.ray.fov = atof(strv[2]);
+	data->cam.ray.origin.i = atof(strtok(strv[1], ","));
+	data->cam.ray.origin.j = atof(strtok(NULL, ","));
+	data->cam.ray.origin.k = atof(strtok(NULL, ","));
+	data->cam.ray.dir.i = atof(strtok(strv[2], ","));
+	data->cam.ray.dir.j = atof(strtok(NULL, ","));
+	data->cam.ray.dir.k = atof(strtok(NULL, ","));
+	data->cam.ray.fov = atof(strv[3]);
 }
 
 void	parse_plane(t_data *data, char *strv[])
 {
-	puts(strv[0]);
-	// t_obj	*obj;
-	// t_plane *pl;
+	t_obj	*obj;
+	t_plane *pl;
 
-	// obj = (t_obj *)malloc(sizeof(t_obj));
-	// obj->type = TYPE_PL;
-	// pl = (t_plane *)malloc(sizeof(t_plane));
-
-	// pl->center.i  = atof(strtok(strv[0]), ",");
-	// pl->center.j  = atof(strtok(NULL, ",");
-	// pl->center.k  = atof(strtok(NULL, ",");
-
-	// pl->dir.i  = atof(strtok(strv[1]), ",");
-	// pl->dir.j  = atof(strtok(NULL, ",");
-	// pl->dir.k  = atof(strtok(NULL, ",");
-
-	// pl->color.r = atof(strtok(strv[2], ","));
-	// pl->color.g = atof(NULL));
-	// pl->color.b = atof(NULL));
-
-	// add_object_front(&data->first_obj, obj);
+	obj = (t_obj *)malloc(sizeof(t_obj));
+	pl = (t_plane *)malloc(sizeof(t_plane));
+	if (!obj || !pl)
+	{
+		free(obj);
+		free(pl);
+		return ;
+	}
+	pl->center.i  = atof(strtok(strv[1], ","));
+	pl->center.j  = atof(strtok(NULL, ","));
+	pl->center.k  = atof(strtok(NULL, ","));
+	pl->normal.i  = atof(strtok(strv[2], ","));
+	pl->normal.j  = atof(strtok(NULL, ","));
+	pl->normal.k  = atof(strtok(NULL, ","));
+	obj->type = TYPE_PL;
+	obj->info = pl;
+	obj->color.t = 0;
+	obj->color.r = atof(strtok(strv[3], ","));
+	obj->color.g = atof(strtok(NULL, ","));
+	obj->color.b = atof(strtok(NULL, ","));
+	obj->next = NULL;
+	add_object_front(&data->first_obj, obj);
 }
 
 void	parse_sphere(t_data *data, char *strv[])
 {
-	puts(strv[0]);
-	// t_obj	*obj;
-	// t_plane *pl;
+	t_obj		*obj;
+	t_sphere	*sp;
 
-	// obj = (t_obj *)malloc(sizeof(t_obj));
-	// obj->type = TYPE_SP;
-	// obj->info = (t_plane *)malloc(sizeof(t_plane));
-
-	// pl->center.i  = atof(strtok(strv[0]), ",");
-	// pl->center.j  = atof(strtok(NULL, ",");
-	// pl->center.k  = atof(strtok(NULL, ",");
-
-	// pl->dir.i  = atof(strtok(strv[1]), ",");
-	// pl->dir.j  = atof(strtok(NULL, ",");
-	// pl->dir.k  = atof(strtok(NULL, ",");
-
-	// pl->color.r = atof(strtok(strv[2], ","));
-	// pl->color.g = atof(NULL));
-	// pl->color.b = atof(NULL));
-
-	// add_object_front(&data->first_obj, obj);
+	obj = (t_obj *)malloc(sizeof(t_obj));
+	sp = (t_sphere *)malloc(sizeof(t_sphere));
+	if (!obj || !sp)
+	{
+		free(obj);
+		free(sp);
+		return ;
+	}
+	sp->center.i  = atof(strtok(strv[1], ","));
+	sp->center.j  = atof(strtok(NULL, ","));
+	sp->center.k  = atof(strtok(NULL, ","));
+	sp->diameter = atof(strv[2]);
+	sp->radius = sp->diameter / 2;
+	obj->type = TYPE_SP;
+	obj->info = sp;
+	obj->color.t = 0;
+	obj->color.r = atof(strtok(strv[3], ","));
+	obj->color.g = atof(strtok(NULL, ","));
+	obj->color.b = atof(strtok(NULL, ","));
+	obj->next = NULL;
+	add_object_front(&data->first_obj, obj);
 }
 
 void	parse_cylinder(t_data *data, char *strv[])
 {
-	puts(strv[0]);
-	// t_obj	*obj;
-	// t_plane *pl;
+	t_obj		*obj;
+	t_cylinder	*cy;
 
-	// obj = (t_obj *)malloc(sizeof(t_obj));
-	// obj->type = TYPE_CY;
-	// pl = (t_plane *)malloc(sizeof(t_plane));
-
-	// pl->center.i  = atof(strtok(strv[0]), ",");
-	// pl->center.j  = atof(strtok(NULL, ",");
-	// pl->center.k  = atof(strtok(NULL, ",");
-
-	// pl->dir.i  = atof(strtok(strv[1]), ",");
-	// pl->dir.j  = atof(strtok(NULL, ",");
-	// pl->dir.k  = atof(strtok(NULL, ",");
-
-	// pl->color.r = atof(strtok(strv[2], ","));
-	// pl->color.g = atof(NULL));
-	// pl->color.b = atof(NULL));
-
-	// add_object_front(&data->first_obj, obj);
+	obj = (t_obj *)malloc(sizeof(t_obj));
+	cy = (t_cylinder *)malloc(sizeof(t_cylinder));
+	if (!obj || !cy)
+	{
+		free(obj);
+		free(cy);
+		return ;
+	}
+	cy->center.i  = atof(strtok(strv[1], ","));
+	cy->center.j  = atof(strtok(NULL, ","));
+	cy->center.k  = atof(strtok(NULL, ","));
+	cy->normal.i  = atof(strtok(strv[2], ","));
+	cy->normal.j  = atof(strtok(NULL, ","));
+	cy->normal.k  = atof(strtok(NULL, ","));
+	cy->height = atof(strv[3]);
+	cy->diameter = atof(strv[4]);
+	cy->radius = cy->diameter / 2;
+	obj->type = TYPE_CY;
+	obj->info = cy;
+	obj->color.t = 0;
+	obj->color.r = atof(strtok(strv[5], ","));
+	obj->color.g = atof(strtok(NULL, ","));
+	obj->color.b = atof(strtok(NULL, ","));
+	obj->next = NULL;
+	add_object_front(&data->first_obj, obj);
 }
 
-enum e_spec {
-	SPEC_A,
-	SPEC_C,
-	SPEC_L,
-	SPEC_PL,
-	SPEC_SP,
-	SPEC_CY
-};
-
-int	specify_identify(char *id)
+static int	specify_identifier(char *id)
 {
-	if (strcmp("A", id))
+	if (strcmp("A", id) == 0)
 		return (SPEC_A);
-	if (strcmp("C", id))
+	if (strcmp("C", id) == 0)
 		return (SPEC_C);
-	if (strcmp("L", id))
+	if (strcmp("L", id) == 0)
 		return (SPEC_L);
-	if (strcmp("pl", id))
+	if (strcmp("pl", id) == 0)
 		return (SPEC_PL);
-	if (strcmp("sp", id))
+	if (strcmp("sp", id) == 0)
 		return (SPEC_SP);
-	if (strcmp("cy", id))
+	if (strcmp("cy", id) == 0)
 		return (SPEC_CY);
 	else
 	{
-		write(2, "Error\n", 6);
+		ft_error("parse_description");
 		exit(1);
 	}
 }
@@ -165,6 +172,8 @@ void	init_fp(void (*fp[6])(t_data *, char *[]))
 
 void	parse_description(char *path, t_data *data)
 {
+	char	*line;
+	char	**strv;
 	int		fd;
 	void	(*fp[6])(t_data *, char *[]);
 
@@ -174,22 +183,18 @@ void	parse_description(char *path, t_data *data)
 		ft_error("parser_description");
 		exit(EXIT_FAILURE);
 	}
-	close(fd);
 	init_fp(fp);
-
-	fp[0](NULL, (char *[]){"0", NULL});
-	fp[1](NULL, (char *[]){"1", NULL});
-	fp[2](NULL, (char *[]){"2", NULL});
-	fp[3](NULL, (char *[]){"3", NULL});
-	fp[4](NULL, (char *[]){"4", NULL});
-	fp[5](NULL, (char *[]){"5", NULL});
-	// while (1)
-	// {
-	// 	line = get_next_line(fd);
-	// 	if (!line)
-	// 		break ;
-	// 	strv = ft_split(line);
-	// 	fp[specify_identifier(strv[0])](data, &strv[1]);
-	// 	free(line);
-	// }
+	line = get_next_line(fd);
+	while (line)
+	{
+		strv = ft_split(line, " ");
+		free(line);
+		fp[specify_identifier(strv[0])](data, strv);
+		free(*strv);
+		for (int i = 0; strv[i];)
+			free(strv[++i]);
+		free(strv);
+		line = get_next_line(fd);
+	}
+	close(fd);
 }
