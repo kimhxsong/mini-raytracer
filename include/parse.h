@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   util.h                                             :+:      :+:    :+:   */
+/*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/03 14:42:26 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/10 21:32:39 by hyeonsok         ###   ########.fr       */
+/*   Created: 2022/01/07 18:44:44 by hyeonsok          #+#    #+#             */
+/*   Updated: 2022/01/10 16:46:00 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef  UTIL_H
-# define UTIL_H
+#ifndef PARSE_H
+# define PARSE_H
 
-#include <fcntl.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
-#include <string.h>
-#include <stdio.h>
+#include "minirt.h"
 
-#define BUFFER_SIZE 1024
 
-char	*get_next_line(int fd);
-char	**ft_split(char *input, const char *sep);
+void	ft_error(char *str);
+int		validate_file(char *file);
+int		validate_argc(int argc);
+
+void	parse_description(char *path, t_data *data);
 
 #endif

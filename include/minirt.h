@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 14:38:12 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/07 17:53:50 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/10 22:45:18 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,17 @@
 #include <string.h>
 #include <stdlib.h>
 
+#include "util.h"
 #include "mlxx.h"
 #include "cam.h"
+
 
 typedef struct s_sphere t_sphere;
 typedef struct s_plane t_plane;
 typedef struct s_cylinder t_cylinder;
 typedef struct s_light t_light;
 typedef struct s_ambient t_ambient;
-typedef struct s_object t_obj;
+typedef struct s_obj t_obj;
 typedef struct s_data t_data;
 
 typedef enum e_type {
@@ -35,17 +37,26 @@ typedef enum e_type {
 	TYPE_CY
 }	t_type;
 
+enum e_spec {
+	SPEC_A,
+	SPEC_C,
+	SPEC_L,
+	SPEC_PL,
+	SPEC_SP,
+	SPEC_CY
+};
+
 struct s_sphere
 {
-    t_vec	center;
-    double	diameter;
-    double	radius;
+	t_vec	center;
+	double	diameter;
+	double	radius;
 };
 
 struct s_plane
 {
-    t_vec	center;
-    t_vec	normal;
+	t_vec	center;
+	t_vec	normal;
 };
 
 struct s_cylinder
@@ -87,5 +98,6 @@ struct s_data {
 };
 
 #include "event.h"
+#include "parse.h"
 
 #endif
