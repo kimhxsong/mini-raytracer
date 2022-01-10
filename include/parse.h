@@ -6,7 +6,7 @@
 /*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 18:44:44 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/10 16:37:54 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/10 16:46:00 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ void	ft_error(char *str);
 int		validate_file(char *file);
 int		validate_argc(int argc);
 
-void	parse_description(char *path, t_data data);
+void	parse_description(char *path, t_data *data);
 
 #endif
