@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 14:38:12 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/10 22:45:18 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/11 18:12:41 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,86 +18,21 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include "util.h"
-#include "mlxx.h"
-#include "cam.h"
-
-
-typedef struct s_sphere t_sphere;
-typedef struct s_plane t_plane;
-typedef struct s_cylinder t_cylinder;
-typedef struct s_light t_light;
-typedef struct s_ambient t_ambient;
-typedef struct s_obj t_obj;
-typedef struct s_data t_data;
-
-typedef enum e_type {
-	TYPE_SP,
-	TYPE_PL,
-	TYPE_CY
-}	t_type;
-
-enum e_spec {
-	SPEC_A,
-	SPEC_C,
-	SPEC_L,
-	SPEC_PL,
-	SPEC_SP,
-	SPEC_CY
-};
-
-struct s_sphere
-{
-	t_vec	center;
-	double	diameter;
-	double	radius;
-};
-
-struct s_plane
-{
-	t_vec	center;
-	t_vec	normal;
-};
-
-struct s_cylinder
-{
-    t_vec   center;
-    t_vec	normal;
-    double	height;
-    double	diameter;
-    double	radius;
-};
-
-struct s_light
-{
-	t_vec	spot;
-	double	ratio;
-};
-
-struct s_ambient
-{
-	double	ratio;
-	t_color	color;
-};
-
-struct s_obj {
-	t_type		type;
-	void		*info;
-	t_color		color;
-	t_obj	*next;
-};
-
-struct s_data {
-	void		*mlx_ptr;
-	t_win		win;
-	t_img		img;
-	t_cam		cam;
-	t_obj		*first_obj;
-	t_light		light;
-	t_ambient	ambient;
-};
-
-#include "event.h"
+#include "libftx.h"
+#include "vec.h"
 #include "parse.h"
+#include "cam.h"
+#include "event.h"
+
+# ifndef WIN_SIZE_X
+#  define WIN_SIZE_X 1920
+# endif
+
+# ifndef WIN_SIZE_Y
+#  define WIN_SIZE_Y 1080
+# endif
+
+void	init_data(char *argv[], t_data *data);
+void	init_cam(t_data *data);
 
 #endif

@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlxx.h                                             :+:      :+:    :+:   */
+/*   libftx.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 14:42:29 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/06 19:10:49 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/11 18:00:50 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef  MLXX_H
-# define MLXX_H
+#ifndef  LIBFTX_H
+# define LIBFTX_H
 
+#include <unistd.h>
+#include <fcntl.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+
+// #include "libft.h"
 #include "mlx.h"
+#include "vec.h"
 
 typedef struct s_win	t_win;
 typedef struct s_img	t_img;
@@ -40,8 +49,19 @@ struct s_color {
 	int	b;
 };
 
+/** mlx extenstion */
 void	mlx_img_pixel_put(t_img *img, t_color *color, int x, int y);
 void	mlx_img_init(void *mlx_ptr, t_win *win, t_img *img);
 int		mlx_pixel_color(t_color *color);
+
+/** libft extension */
+void	ft_error(char *str);
+void	*cutstom_malloc(int len, size_t size);
+
+#define BUFFER_SIZE 1024
+
+/** libft */
+char	*get_next_line(int fd);
+char	**ft_split(char *input, const char *sep);
 
 #endif

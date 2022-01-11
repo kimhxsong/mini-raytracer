@@ -6,11 +6,11 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 15:19:22 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/03 15:19:40 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/11 16:50:18 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlxx.h"
+#include "libftx.h"
 
 int	mlx_pixel_color(t_color *color)
 {

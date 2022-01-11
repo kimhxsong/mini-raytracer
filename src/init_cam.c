@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cam.c                                              :+:      :+:    :+:   */
+/*   init_cam.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 14:11:56 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/10 23:05:06 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/11 18:04:14 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,9 @@ static void	init_view(t_cam *cam, double width, double height)
 	}
 }
 
-void	init_cam(t_cam *cam, double width, double height)
+void	init_cam(t_data *data)
 {
-	init_ray(&cam->ray);
-	alloc_view(cam, width, height);
-	init_view(cam, width, height);
+	init_ray(&data->cam.ray);
+	alloc_view(&data->cam, data->win.width, data->win.height);
+	init_view(&data->cam, data->win.width, data->win.height);
 }

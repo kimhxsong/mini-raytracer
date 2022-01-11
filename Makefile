@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/03 14:45:59 by hyeonsok          #+#    #+#              #
-#    Updated: 2022/01/10 21:32:21 by hyeonsok         ###   ########.fr        #
+#    Updated: 2022/01/11 18:10:21 by hyeonsok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,13 +26,15 @@ UTIL_VEC_DIR := ./util/vec
 OBJDIR := ./obj
 OBJS	= $(addprefix $(OBJDIR)/, \
 			main.o \
-			cam.o \
-			event.o \
-			validate.o \
+			init_data.o \
+			init_cam.o \
 			parse.o \
+			parse_obj.o \
+			parse_uni.o \
+			listen_event.o \
 			get_next_line.o \
-			split.o \
-			mlx_img_init.o \
+			ft_error.o \
+			ft_split.o \
 			mlx_img_pixel_put.o \
 			mlx_pixel_color.o \
 			vec_calculate.o \
