@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   event.c                                            :+:      :+:    :+:   */
+/*   listen_event.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 15:31:23 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/07 15:55:06 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/11 18:15:51 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "event.h"
+#include "minirt.h"
 
 static int mouse_event(t_data *data)
 {
-	printf("red cross\n");
+	printf("Red-Cross cliked...\n");
 	exit(0);
 	// cleanup()...
 	// mlx_destroy_image(data.mlx_ptr, data.img.ptr);
@@ -25,8 +25,12 @@ static int mouse_event(t_data *data)
 
 static int key_event(int keycode, t_data *data)
 {
-	printf("%d\n", keycode);
-	exit(0);
+	
+	if (keycode == ESC)
+	{
+		printf("ESC pressed...\n");
+		exit(0);
+	}
 	// cleanup()...
 	// mlx_destroy_image(data.mlx_ptr, data.img.ptr);
 	// mlx_destroy_window(data.mlx_ptr, data.win.ptr);

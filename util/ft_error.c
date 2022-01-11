@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_img_init.c                                     :+:      :+:    :+:   */
+/*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/03 15:15:16 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/06 17:26:21 by hyeonsok         ###   ########.fr       */
+/*   Created: 2022/01/11 14:34:45 by hyeonsok          #+#    #+#             */
+/*   Updated: 2022/01/11 18:20:02 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlxx.h"
+#include "minirt.h"
 
-void	mlx_img_init(void *mlx_ptr, t_win *win, t_img *img)
+void	ft_error(char *str)
 {
-	img->ptr = mlx_new_image(mlx_ptr, win->width, win->height);
-	img->addr = mlx_get_data_addr(\
-		img->ptr, &img->bpp, &img->width, &img->endian);
+	write(2, "Error: ", 7);
+	write(2, str, strlen(str));
+	write(2, "\n", 1);
+	exit(EXIT_FAILURE);
 }

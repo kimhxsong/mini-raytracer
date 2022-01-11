@@ -6,11 +6,11 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 15:13:18 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/06 19:54:16 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/11 17:36:29 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlxx.h"
+#include "libftx.h"
 
 void    mlx_img_pixel_put(t_img *img, t_color *color, int x, int y)
 {

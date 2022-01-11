@@ -6,23 +6,16 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 16:39:44 by yookim            #+#    #+#             */
-/*   Updated: 2022/01/06 20:14:47 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/11 17:03:56 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VEC_H
 # define VEC_H
 
-#include <math.h>
+#include "libftx.h"
 
-typedef struct s_coordinates t_coordinates;
 typedef struct s_vec t_vec;
-
-struct s_coordinates {
-	int	x;
-	int	y;
-	int	z;
-};
 
 struct s_vec {
 	double	i;
