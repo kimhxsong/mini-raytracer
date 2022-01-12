@@ -6,7 +6,7 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 17:36:06 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/12 12:59:09 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/12 17:30:01 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,9 @@ char	*get_next_line(int fd)
 
 	temp = save;
 	memset(buff, 0, BUFFER_SIZE + 1);
-	res = read(fd, buff, BUFFER_SIZE);
-	if (res < 0)
+	if (fd >= 0)
+		res = read(fd, buff, BUFFER_SIZE);
+	if (fd < 0 || res < 0)
 	{
 		free(temp);
 		save = NULL;

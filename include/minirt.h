@@ -6,7 +6,7 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 14:38:12 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/11 18:12:41 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/12 17:14:42 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@
 #include "libftx.h"
 #include "vec.h"
 #include "parse.h"
-#include "cam.h"
-#include "event.h"
 
 # ifndef WIN_SIZE_X
 #  define WIN_SIZE_X 1920
@@ -32,7 +30,10 @@
 #  define WIN_SIZE_Y 1080
 # endif
 
-void	init_data(char *argv[], t_data *data);
-void	init_cam(t_data *data);
+# define ESC 53
+
+void    init_data(char *argv[], t_data *data);
+void    init_scene(t_data *data);
+void    listen_event(t_data *data);
 
 #endif

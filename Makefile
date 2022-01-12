@@ -6,7 +6,7 @@
 #    By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/03 14:45:59 by hyeonsok          #+#    #+#              #
-#    Updated: 2022/01/11 18:10:21 by hyeonsok         ###   ########.fr        #
+#    Updated: 2022/01/12 17:44:15 by hyeonsok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,12 +27,13 @@ OBJDIR := ./obj
 OBJS	= $(addprefix $(OBJDIR)/, \
 			main.o \
 			init_data.o \
-			init_cam.o \
+			init_scene.o \
 			parse.o \
 			parse_obj.o \
 			parse_uni.o \
 			listen_event.o \
 			get_next_line.o \
+			ft_strvfree.o \
 			ft_error.o \
 			ft_split.o \
 			mlx_img_pixel_put.o \

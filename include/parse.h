@@ -6,7 +6,7 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 18:44:44 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/11 18:17:42 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/12 17:14:18 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ enum e_spec {
 	SPEC_L,
 	SPEC_PL,
 	SPEC_SP,
-	SPEC_CY
+	SPEC_CY,
+	SPEC_NO
 };
 
 typedef struct s_sphere t_sphere;
@@ -36,9 +37,9 @@ typedef struct s_cylinder t_cylinder;
 typedef struct s_light t_light;
 typedef struct s_ambient t_ambient;
 typedef struct s_obj t_obj;
-typedef struct s_ray    t_ray;
-typedef struct s_view   t_view;
 typedef struct s_cam    t_cam;
+typedef struct s_view   t_view;
+typedef struct s_scene    t_scene;
 typedef struct s_data t_data;
 
 struct s_sphere
@@ -82,7 +83,7 @@ struct s_obj {
 	t_obj	*next;
 };
 
-struct s_ray {
+struct s_cam {
 	t_vec	origin;
 	t_vec	dir;
 	t_vec	up;
@@ -99,8 +100,8 @@ struct s_view {
 	t_vec	**matrix;
 };
 
-struct s_cam {
-	t_ray	ray;
+struct s_scene {
+	t_cam	cam;
 	t_view	view;
 };
 
@@ -108,13 +109,11 @@ struct s_data {
 	void		*mlx_ptr;
 	t_win		win;
 	t_img		img;
-	t_cam		cam;
+	t_scene		scene;
 	t_obj		*first_obj;
 	t_light		light;
 	t_ambient	ambient;
 };
-
-//validate.c
 
 void	parse_ambient(t_data *data, char *strv[]);
 void	parse_light(t_data *data, char *strv[]);

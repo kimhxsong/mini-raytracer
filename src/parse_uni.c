@@ -6,7 +6,7 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 16:22:27 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/11 17:44:08 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/12 17:16:01 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ void	parse_light(t_data *data, char *strv[])
 
 void	parse_camera(t_data *data, char *strv[])
 {
-	data->cam.ray.origin.i = atof(strtok(strv[1], ","));
-	data->cam.ray.origin.j = atof(strtok(NULL, ","));
-	data->cam.ray.origin.k = atof(strtok(NULL, ","));
-	data->cam.ray.dir.i = atof(strtok(strv[2], ","));
-	data->cam.ray.dir.j = atof(strtok(NULL, ","));
-	data->cam.ray.dir.k = atof(strtok(NULL, ","));
-	data->cam.ray.fov = atof(strv[3]);
+	data->scene.cam.origin.i = atof(strtok(strv[1], ","));
+	data->scene.cam.origin.j = atof(strtok(NULL, ","));
+	data->scene.cam.origin.k = atof(strtok(NULL, ","));
+	data->scene.cam.dir.i = atof(strtok(strv[2], ","));
+	data->scene.cam.dir.j = atof(strtok(NULL, ","));
+	data->scene.cam.dir.k = atof(strtok(NULL, ","));
+	data->scene.cam.fov = atof(strv[3]);
 }

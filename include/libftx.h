@@ -6,7 +6,7 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 14:42:29 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/11 18:00:50 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/12 09:54:16 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int		mlx_pixel_color(t_color *color);
 
 /** libft extension */
 void	ft_error(char *str);
-void	*cutstom_malloc(int len, size_t size);
+void	ft_strvfree(char *strv[]);
 
 #define BUFFER_SIZE 1024
 
