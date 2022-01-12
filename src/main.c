@@ -6,7 +6,7 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 14:35:48 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/11 18:02:20 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/12 17:39:42 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,16 @@ static void	validate_args(int argc, char *argv[])
 	char	*ext;
 
 	if (argc != 2)
-		ft_error("There are no or more than one arguments");
+		ft_error("Invalid argument");
 	ext = strrchr(argv[1], '.');
 	if (!ext || strcmp(ext, ".rt"))
-		ft_error("The extension of the argument is not *.rt");
+		ft_error("Invalid file");
 }
 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
 	t_data	data;
-	
+
 	validate_args(argc, argv);
 	init_data(argv, &data);
 	draw_scene(&data);

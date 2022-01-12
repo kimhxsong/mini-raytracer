@@ -6,13 +6,13 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 17:19:59 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/11 18:14:05 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/12 17:03:13 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static void init_mlx(t_data *data)
+static void	init_mlx(t_data *data)
 {
 	data->mlx_ptr = mlx_init();
 	if (!data->mlx_ptr)
@@ -22,7 +22,7 @@ static void init_mlx(t_data *data)
 	}
 }
 
-static void init_win(t_data *data)
+static void	init_win(t_data *data)
 {
 	data->win.width = 1920;
 	data->win.height = 1080;
@@ -35,7 +35,7 @@ static void init_win(t_data *data)
 	}
 }
 
-static void init_img(t_data *data)
+static void	init_img(t_data *data)
 {
 	data->img.ptr = \
 		mlx_new_image(data->mlx_ptr, data->win.width, data->win.height);
@@ -63,5 +63,5 @@ void	init_data(char *argv[], t_data *data)
 	init_win(data);
 	init_img(data);
 	parse(open(argv[1], O_RDONLY), data);
-	init_cam(data);
+	init_scene(data);
 }

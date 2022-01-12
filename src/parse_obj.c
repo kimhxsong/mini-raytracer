@@ -6,7 +6,7 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 13:26:56 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/11 13:27:59 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/12 17:16:28 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	parse_plane(t_data *data, char *strv[])
 {
 	t_obj	*obj;
-	t_plane *pl;
+	t_plane	*pl;
 
 	obj = (t_obj *)malloc(sizeof(t_obj));
 	pl = (t_plane *)malloc(sizeof(t_plane));
