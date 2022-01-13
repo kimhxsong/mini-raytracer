@@ -40,4 +40,8 @@ void    init_data(char *argv[], t_data *data);
 void    init_scene(t_data *data);
 void    listen_event(t_data *data);
 
+void    init_data(char *argv[], t_data *data);
+void    init_scene(t_data *data);
+void    listen_event(t_data *data);
+
 #endif
