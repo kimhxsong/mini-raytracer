@@ -6,7 +6,7 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 14:11:56 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/12 17:00:56 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/13 17:30:40 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,10 @@ static void	cleanup(t_data *data)
 
 static void	init_cam(t_cam *cam)
 {
+	cam->focal_len = 1.f;
+	cam->up.i = 0.f;
+	cam->up.j = 1.f;
+	cam->up.k = 0.f;
 	cam->basis_k = vec_cal_unit(vec_mult(cam->dir, -1));
 	cam->basis_i = vec_cal_unit(vec_cross(cam->up, cam->basis_k));
 	cam->basis_j = vec_cross(cam->basis_k, cam->basis_i);
@@ -75,9 +79,9 @@ static void	init_view(t_scene *scene, double width, double height)
 	int				j;
 
 	scene->view.width = 2 * scene->cam.focal_len \
-		* tan(0.5 * pi * scene->cam.fov / 3);
+		* tan(0.5 * pi * scene->cam.fov / 180);
 	scene->view.height = scene->view.width * height / width;
-	center = vec_minus(vec_mult(scene->cam.basis_k, scene->cam.focal_len), \
+	center = vec_plus(vec_mult(scene->cam.basis_k, -scene->cam.focal_len), \
 		scene->cam.origin);
 	left_top = vec_minus(center, \
 		vec_plus(vec_mult(scene->cam.basis_i, scene->view.width * 0.5), \
