@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vec.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 16:39:44 by yookim            #+#    #+#             */
-/*   Updated: 2022/01/13 15:53:02 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/13 18:03:26 by yookim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "libftx.h"
 
 typedef struct s_vec t_vec;
+typedef struct s_vec t_point;
 
 struct s_vec {
 	double	i;
