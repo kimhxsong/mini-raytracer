@@ -6,11 +6,26 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 13:26:56 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/12 17:16:28 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/13 15:57:03 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+static void str_to_vec(t_vec *vec, char *str)
+{
+	vec->i  = atof(strtok(str, ","));
+	vec->j  = atof(strtok(NULL, ","));
+	vec->k  = atof(strtok(NULL, ","));
+}
+
+static void	str_to_color(t_color *color, char *str)
+{
+	color->t = 0;
+	color->r = atof(strtok(str, ","));
+	color->g = atof(strtok(NULL, ","));
+	color->b = atof(strtok(NULL, ","));
+}
 
 void	parse_plane(t_data *data, char *strv[])
 {
@@ -25,18 +40,11 @@ void	parse_plane(t_data *data, char *strv[])
 		free(pl);
 		return ;
 	}
-	pl->center.i  = atof(strtok(strv[1], ","));
-	pl->center.j  = atof(strtok(NULL, ","));
-	pl->center.k  = atof(strtok(NULL, ","));
-	pl->normal.i  = atof(strtok(strv[2], ","));
-	pl->normal.j  = atof(strtok(NULL, ","));
-	pl->normal.k  = atof(strtok(NULL, ","));
+	str_to_vec(&pl->center, strv[1]);
+	str_to_vec(&pl->normal, strv[2]);
 	obj->type = TYPE_PL;
 	obj->info = pl;
-	obj->color.t = 0;
-	obj->color.r = atof(strtok(strv[3], ","));
-	obj->color.g = atof(strtok(NULL, ","));
-	obj->color.b = atof(strtok(NULL, ","));
+	str_to_color(&obj->color, strv[3]);
 	obj->next = NULL;
 	add_object_front(&data->first_obj, obj);
 }
@@ -54,17 +62,12 @@ void	parse_sphere(t_data *data, char *strv[])
 		free(sp);
 		return ;
 	}
-	sp->center.i  = atof(strtok(strv[1], ","));
-	sp->center.j  = atof(strtok(NULL, ","));
-	sp->center.k  = atof(strtok(NULL, ","));
+	str_to_vec(&sp->center, strv[1]);
 	sp->diameter = atof(strv[2]);
 	sp->radius = sp->diameter / 2;
 	obj->type = TYPE_SP;
 	obj->info = sp;
-	obj->color.t = 0;
-	obj->color.r = atof(strtok(strv[3], ","));
-	obj->color.g = atof(strtok(NULL, ","));
-	obj->color.b = atof(strtok(NULL, ","));
+	str_to_color(&obj->color, strv[3]);
 	obj->next = NULL;
 	add_object_front(&data->first_obj, obj);
 }
@@ -82,21 +85,14 @@ void	parse_cylinder(t_data *data, char *strv[])
 		free(cy);
 		return ;
 	}
-	cy->center.i  = atof(strtok(strv[1], ","));
-	cy->center.j  = atof(strtok(NULL, ","));
-	cy->center.k  = atof(strtok(NULL, ","));
-	cy->normal.i  = atof(strtok(strv[2], ","));
-	cy->normal.j  = atof(strtok(NULL, ","));
-	cy->normal.k  = atof(strtok(NULL, ","));
+	str_to_vec(&cy->center, strv[1]);
+	str_to_vec(&cy->normal, strv[2]);
 	cy->height = atof(strv[3]);
 	cy->diameter = atof(strv[4]);
 	cy->radius = cy->diameter / 2;
 	obj->type = TYPE_CY;
 	obj->info = cy;
-	obj->color.t = 0;
-	obj->color.r = atof(strtok(strv[5], ","));
-	obj->color.g = atof(strtok(NULL, ","));
-	obj->color.b = atof(strtok(NULL, ","));
+	str_to_color(&obj->color, strv[5]);
 	obj->next = NULL;
 	add_object_front(&data->first_obj, obj);
 }
