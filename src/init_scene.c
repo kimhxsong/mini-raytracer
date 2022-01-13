@@ -6,7 +6,7 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 14:11:56 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/13 16:09:10 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/13 17:30:40 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ static void	init_view(t_scene *scene, double width, double height)
 	scene->view.width = 2 * scene->cam.focal_len \
 		* tan(0.5 * pi * scene->cam.fov / 180);
 	scene->view.height = scene->view.width * height / width;
-	center = vec_minus(vec_mult(scene->cam.basis_k, scene->cam.focal_len), \
+	center = vec_plus(vec_mult(scene->cam.basis_k, -scene->cam.focal_len), \
 		scene->cam.origin);
 	left_top = vec_minus(center, \
 		vec_plus(vec_mult(scene->cam.basis_i, scene->view.width * 0.5), \
