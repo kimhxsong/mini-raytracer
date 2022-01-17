@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_obj.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 13:26:56 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/12 17:16:28 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/14 15:02:17 by yookim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,8 @@ void	parse_cylinder(t_data *data, char *strv[])
 	cy->normal.i  = atof(strtok(strv[2], ","));
 	cy->normal.j  = atof(strtok(NULL, ","));
 	cy->normal.k  = atof(strtok(NULL, ","));
-	cy->height = atof(strv[3]);
-	cy->diameter = atof(strv[4]);
+	cy->diameter = atof(strv[3]);
+	cy->height = atof(strv[4]);
 	cy->radius = cy->diameter / 2;
 	obj->type = TYPE_CY;
 	obj->info = cy;
