@@ -6,7 +6,7 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 14:42:29 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/17 16:17:03 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/17 19:43:37 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,13 @@ int		convert_rgb(t_color color);
 
 /** libft extension */
 void	ft_error(char *str);
+size_t  ft_strvlen(char **strv);
 void	ft_strvfree(char *strv[]);
 double	ft_atof(char *str);
-int		ft_drange(double n, double max, double min);
-int		ft_irange(int n, int max, int min);
+int		ft_isinscope(double n, double max, double min);
+int		ft_issign(int c);
+t_color	ft_strtocolor(char *str);
+t_vec	ft_strtovec(char *str);
 
 #define BUFFER_SIZE 1024
 
