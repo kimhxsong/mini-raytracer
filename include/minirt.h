@@ -6,7 +6,7 @@
 /*   By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 14:38:12 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/13 18:04:37 by yookim           ###   ########.fr       */
+/*   Updated: 2022/01/16 19:03:52 by yookim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,13 @@
 #  define WIN_SIZE_Y 1080
 # endif
 
+# define _USE_MATH_DEFINES
+
 # define ESC 53
 # define TRUE 1
 # define FALSE 0
+# define EPSILON 1e-6
+# define LUMEN 3
 
 void    init_data(char *argv[], t_data *data);
 void    init_scene(t_data *data);
