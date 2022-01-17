@@ -6,49 +6,78 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 19:21:14 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/17 16:11:06 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/17 19:11:12 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
+#include <ctype.h>
+#include <string.h>
 #include "parse.h"
 
-void    str_to_vec(t_vec *vec, char *str)
+int ft_isfloatform(char *str)
 {
+    char    *tmp;
+    int     i;
 
-	vec->i  = atof(strtok(str, ","));
-	vec->j  = atof(strtok(NULL, ","));
-	vec->k  = atof(strtok(NULL, ","));
+    str += ft_issign(*str);
+    while(isdigit(*str))
+        ++str;
+    str += *str == '.';
+    while (isdigit(*str))
+        ++str;
+    if (!*str)
+        return (1);
+    return (0);
 }
 
-void	str_to_color(t_color *color, char *str)
+int ft_isvecform(char *str)
 {
-	color->t = 0;
-	color->r = atof(strtok(str, ","));
-	color->g = atof(strtok(NULL, ","));
-	color->b = atof(strtok(NULL, ","));
+    char    *token;
+    int     count;
+    
+    count = 3;
+    token = strtok(str, ",");
+    while (count > 0 && token)
+    {
+        if (!ft_isfloatform(token))
+            break ;
+        --count;
+        token = strtok(NULL, ",");
+    }
+    if (!count && !token)
+        return (1);
+    return (0);
 }
 
-// int	check_str_color(char *str, double max, double min)
-// {
-// 	char	*temp;
+static int ft_isintform(char *str)
+{
+    int     maxlen;
 
-// 	temp = str;
-// 	while (*temp)
-// 		if (isdigit(*str, ))
-// 			error();
-	
-// }
+    maxlen = 10;
+    str += ft_issign(*str);
+    while(isdigit(*str) && maxlen-- > 0)
+        ++str;
+    if (!*str)
+        return (1);
+    return (0);
+}
 
-// check_vec_color(char *str, double max, double min)
-// {
-// 	char	*tmp;
+int ft_isrgbform(char *str)
+{
+    char    *token;
+    int     count;
 
-// 	temp = str
-// 	while (*str)
-// 	{
-// 		is
-// 	}
-// 	str = temp;
-// }
-
-
+    count = 3;
+    token = strtok(str, ",");
+    while (count > 0 && token)
+    {
+        if (!ft_isintform(token))
+            break ;
+        --count;
+        token = strtok(NULL, ",");
+    }
+    if (!count && !token)
+        return (1);
+    return (0);
+}

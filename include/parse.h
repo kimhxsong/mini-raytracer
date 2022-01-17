@@ -6,15 +6,15 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 18:44:44 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/17 16:16:49 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/17 19:50:35 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSE_H
 # define PARSE_H
 
-#include "libftx.h"
-
+# include "libftx.h"
+# define FOCAL_LEN 1.0f
 typedef enum e_type {
 	TYPE_SP,
 	TYPE_PL,
@@ -146,7 +146,9 @@ void	parse_sphere(t_data *data, char *strv[]);
 void	parse_cylinder(t_data *data, char *strv[]);
 void	add_object_front(t_obj **first_obj, t_obj *new);
 
-void    str_to_vec(t_vec *vec, char *str);
-void	str_to_color(t_color *color, char *str);
+int		ft_isfloatform(char *str);
+int		ft_isvecform(char *str);
+int		ft_iscolorform(char *str);
+int		ft_isintform(char *str);
 
 #endif
