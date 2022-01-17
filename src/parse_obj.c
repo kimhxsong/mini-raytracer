@@ -6,26 +6,11 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 13:26:56 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/13 15:57:03 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/13 19:24:47 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
-static void str_to_vec(t_vec *vec, char *str)
-{
-	vec->i  = atof(strtok(str, ","));
-	vec->j  = atof(strtok(NULL, ","));
-	vec->k  = atof(strtok(NULL, ","));
-}
-
-static void	str_to_color(t_color *color, char *str)
-{
-	color->t = 0;
-	color->r = atof(strtok(str, ","));
-	color->g = atof(strtok(NULL, ","));
-	color->b = atof(strtok(NULL, ","));
-}
 
 void	parse_plane(t_data *data, char *strv[])
 {
