@@ -6,7 +6,7 @@
 #    By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/03 14:45:59 by hyeonsok          #+#    #+#              #
-#    Updated: 2022/01/17 16:06:31 by hyeonsok         ###   ########.fr        #
+#    Updated: 2022/01/17 16:16:44 by hyeonsok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,9 +41,12 @@ OBJS	= $(addprefix $(OBJDIR)/, \
 			ft_drange.o \
 			ft_atof.o \
 			mlx_img_pixel_put.o \
-			mlx_pixel_color.o \
+			convert_rgb.o \
 			vec_calculate.o \
-			vec_operator.o)
+			vec_operator.o \
+			draw.o \
+			hit.o \
+			light.o)
 
 NAME = miniRT
 
@@ -52,38 +55,38 @@ all:		mlx $(NAME)
 
 .PHONY:		mlx
 mlx:
-			make -C ./lib/minilibx_opengl_20191021/
+			@make -C ./lib/minilibx_opengl_20191021/
 
 $(OBJDIR)/%.o : $(SRCDIR)/%.c
-			$(CC) $(INCLUDES) $(CFLAGS) -c $< -o $@
+			@$(CC) $(INCLUDES) $(CFLAGS) -c $< -o $@
 
 $(OBJDIR)/%.o : $(UTILDIR)/%.c
-			$(CC) $(INCLUDES) $(CFLAGS) -c $< -o $@
+			@$(CC) $(INCLUDES) $(CFLAGS) -c $< -o $@
 
 $(OBJDIR)/%.o : $(UTIL_MLX_DIR)/%.c
-			$(CC) $(INCLUDES) $(CFLAGS) -c $< -o $@
+			@$(CC) $(INCLUDES) $(CFLAGS) -c $< -o $@
 
 $(OBJDIR)/%.o : $(UTIL_VEC_DIR)/%.c
-			$(CC) $(INCLUDES) $(CFLAGS) -c $< -o $@
+			@$(CC) $(INCLUDES) $(CFLAGS) -c $< -o $@
 
 .PHONY:		NAME
 $(NAME):	$(OBJDIR) $(OBJS)
-			$(CC) $(INCLUDES) $(LIBS) $(OBJS) -o $(NAME)
+			@$(CC) $(INCLUDES) $(LIBS) $(OBJS) -o $(NAME)
 
 $(OBJS): | $(OBJDIR)
 $(OBJDIR):
-			mkdir $(OBJDIR)
+			@mkdir $(OBJDIR)
 
 .PHONY:		clean
 clean:
-			$(RM) -r $(OBJDIR)
+			@$(RM) -r $(OBJDIR)
 
 .PHONY:		fclean
 fclean:		clean
-			make clean -C ./lib/minilibx_opengl_20191021/
-			$(RM) -r $(NAME)
+			@make clean -C ./lib/minilibx_opengl_20191021/
+			@$(RM) -r $(NAME)
 
 .PHONY:		re
 re:
-			$(MAKE) fclean
-			$(MAKE)
+			@$(MAKE) fclean
+			@$(MAKE)

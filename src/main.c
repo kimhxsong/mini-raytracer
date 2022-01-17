@@ -3,23 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 14:35:48 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/12 17:39:42 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/13 18:02:28 by yookim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
-static void	draw_scene(t_data *data)
-{
-	/*
-	yookim
-	*/
-	mlx_put_image_to_window(data->mlx_ptr, data->win.ptr, data->img.ptr, \
-		data->win.width, data->win.height);
-}
 
 static void	validate_args(int argc, char *argv[])
 {

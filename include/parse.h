@@ -6,7 +6,7 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 18:44:44 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/17 16:10:44 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/17 16:16:49 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,9 @@ typedef struct s_obj t_obj;
 typedef struct s_cam    t_cam;
 typedef struct s_view   t_view;
 typedef struct s_scene    t_scene;
+typedef struct s_hit_record t_hit_record;
 typedef struct s_data t_data;
+
 
 struct s_sphere
 {
@@ -105,14 +107,33 @@ struct s_scene {
 	t_view	view;
 };
 
+typedef struct s_ray
+{
+	t_point	orig;	// 정점.시작점
+	t_vec	dir;    // 방향 벡터(단위 벡터O)
+} t_ray;
+
+struct	s_hit_record
+{
+	t_point		p;
+	t_vec		normal;
+	double		tmin;
+	double		tmax;
+	double		t;
+	int			front_face;
+	t_color		color;
+};
+
 struct s_data {
-	void		*mlx_ptr;
-	t_win		win;
-	t_img		img;
-	t_scene		scene;
-	t_obj		*first_obj;
-	t_light		light;
-	t_ambient	ambient;
+	void			*mlx_ptr;
+	t_win			win;
+	t_img			img;
+	t_scene			scene;
+	t_obj			*first_obj;
+	t_light			light;
+	t_ambient		ambient;
+	t_ray			ray;
+	t_hit_record	rec;
 };
 
 void	parse_ambient(t_data *data, char *strv[]);

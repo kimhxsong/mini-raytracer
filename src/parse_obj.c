@@ -6,7 +6,7 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 13:26:56 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/13 19:24:47 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/17 16:16:47 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,21 @@ void	parse_cylinder(t_data *data, char *strv[])
 		free(cy);
 		return ;
 	}
+<<<<<<< HEAD
 	str_to_vec(&cy->center, strv[1]);
 	str_to_vec(&cy->normal, strv[2]);
 	cy->height = atof(strv[3]);
 	cy->diameter = atof(strv[4]);
+=======
+	cy->center.i  = atof(strtok(strv[1], ","));
+	cy->center.j  = atof(strtok(NULL, ","));
+	cy->center.k  = atof(strtok(NULL, ","));
+	cy->normal.i  = atof(strtok(strv[2], ","));
+	cy->normal.j  = atof(strtok(NULL, ","));
+	cy->normal.k  = atof(strtok(NULL, ","));
+	cy->diameter = atof(strv[3]);
+	cy->height = atof(strv[4]);
+>>>>>>> 4dcdff54738f636ebee6b61fc1501d24eb977d38
 	cy->radius = cy->diameter / 2;
 	obj->type = TYPE_CY;
 	obj->info = cy;

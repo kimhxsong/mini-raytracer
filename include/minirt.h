@@ -6,7 +6,7 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 14:38:12 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/17 16:06:43 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/17 16:17:34 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@
 #include "libftx.h"
 #include "vec.h"
 #include "parse.h"
-// #include "draw.h"
+#include "draw.h"
+#include "hit.h"
 
 # ifndef WIN_SIZE_X
 #  define WIN_SIZE_X 1920
@@ -31,7 +32,17 @@
 #  define WIN_SIZE_Y 1080
 # endif
 
+# define _USE_MATH_DEFINES
+
 # define ESC 53
+# define TRUE 1
+# define FALSE 0
+# define EPSILON 1e-6
+# define LUMEN 3
+
+void    init_data(char *argv[], t_data *data);
+void    init_scene(t_data *data);
+void    listen_event(t_data *data);
 
 void    init_data(char *argv[], t_data *data);
 void    init_scene(t_data *data);
