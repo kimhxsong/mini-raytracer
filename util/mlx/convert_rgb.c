@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_pixel_color.c                                  :+:      :+:    :+:   */
+/*   create_rgb.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 15:19:22 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/11 16:50:18 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/17 10:32:55 by yookim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftx.h"
 
-int	mlx_pixel_color(t_color *color)
+int		convert_rgb(t_color color)
 {
-	return (color->t << 24 | color->r << 16 | color->g << 8 | color->b);
+	int	r;
+	int	g;
+	int	b;
+
+	r = (int)(color.r);
+	g = (int)(color.g);
+	b = (int)(color.b);
+	return (0 << 24 | r << 16 | g << 8 | b);
 }

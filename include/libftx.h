@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libftx.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 14:42:29 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/12 09:54:16 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/17 10:33:37 by yookim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,18 @@ struct s_img {
 	int		endian;
 };
 
+// double로 바꿈
 struct s_color {
-	int	t;
-	int	r;
-	int	g;
-	int	b;
+	double t;
+	double r;
+	double g;
+	double b;
 };
 
 /** mlx extenstion */
-void	mlx_img_pixel_put(t_img *img, t_color *color, int x, int y);
 void	mlx_img_init(void *mlx_ptr, t_win *win, t_img *img);
-int		mlx_pixel_color(t_color *color);
+void    mlx_img_pixel_put(t_img *img, int color, int x, int y);
+int		convert_rgb(t_color color);
 
 /** libft extension */
 void	ft_error(char *str);
