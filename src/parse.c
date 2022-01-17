@@ -6,31 +6,14 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 18:27:41 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/12 17:58:36 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/17 19:52:23 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static void	handle_execption(t_data *data, char *strv[])
+static void	handle_invalid(t_data *data, char *strv[])
 {
-	t_obj	*curr;
-	void	*del;
-	int		i;
-
-	if (*strv[0] == '\n')
-		return ;
-	mlx_destroy_window(data->mlx_ptr, data->win.ptr);
-	mlx_destroy_image(data->mlx_ptr, data->img.ptr);
-	curr = data->first_obj;
-	while (curr)
-	{
-		free(curr->info);
-		del = curr;
-		curr = curr->next;
-		free(del);
-	}
-	ft_strvfree(strv);
 	ft_error("Invalid identifier");
 }
 
@@ -59,7 +42,7 @@ static void	init_funcptr(void (*fp[7])(t_data *, char *[]))
 	fp[3] = parse_plane;
 	fp[4] = parse_sphere;
 	fp[5] = parse_cylinder;
-	fp[6] = handle_execption;
+	fp[6] = handle_invalid;
 }
 
 void	parse(int fd, t_data *data)
@@ -68,17 +51,14 @@ void	parse(int fd, t_data *data)
 	char	**strv;
 	void	(*fp[7])(t_data *, char *[]);
 
-	line = get_next_line(fd);
-	if (fd < 0 || !line)
+	if (fd < 0)
 	{
-		mlx_destroy_window(data->mlx_ptr, data->win.ptr);
-		mlx_destroy_image(data->mlx_ptr, data->img.ptr);
-		if (fd < 0)
-			ft_error(strerror(2));
-		if (!line)
-			ft_error("Empty file");
-		
+		perror("open");
+		exit(1);
 	}
+	line = get_next_line(fd);
+	if (!line)
+		ft_error("Empty file");
 	init_funcptr(fp);
 	while (line && *line)
 	{

@@ -6,7 +6,7 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 17:19:59 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/12 17:03:13 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/17 19:25:39 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ static void	init_img(t_data *data)
 	if (!data->img.ptr)
 	{
 		perror("mlx_new_image");
-		mlx_destroy_window(data->mlx_ptr, data->win.ptr);
 		exit(EXIT_FAILURE);
 	}
 	data->img.addr = mlx_get_data_addr(\
@@ -50,8 +49,6 @@ static void	init_img(t_data *data)
 	if (!data->img.addr)
 	{
 		perror("mlx_get_data_addr");
-		mlx_destroy_window(data->mlx_ptr, data->win.ptr);
-		mlx_destroy_image(data->mlx_ptr, data->img.ptr);
 		exit(EXIT_FAILURE);
 	}
 }

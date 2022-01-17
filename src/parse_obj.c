@@ -6,7 +6,7 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 13:26:56 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/17 16:16:47 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/17 19:30:27 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,17 @@ void	parse_plane(t_data *data, char *strv[])
 {
 	t_obj	*obj;
 	t_plane	*pl;
+	int		isform;
 
+	// isform = 
+	if (!isform)
+		ft_error("Invalid 'plane' description");
 	obj = (t_obj *)malloc(sizeof(t_obj));
 	pl = (t_plane *)malloc(sizeof(t_plane));
 	if (!obj || !pl)
 	{
-		free(obj);
-		free(pl);
-		return ;
+		perror("malloc");
+		exit(EXIT_FAILURE);
 	}
 	str_to_vec(&pl->center, strv[1]);
 	str_to_vec(&pl->normal, strv[2]);
@@ -38,14 +41,17 @@ void	parse_sphere(t_data *data, char *strv[])
 {
 	t_obj		*obj;
 	t_sphere	*sp;
+	int		isform;
 
+	// isform = 
+	if (!isform)
+		ft_error("Invalid 'sphere' description");
 	obj = (t_obj *)malloc(sizeof(t_obj));
 	sp = (t_sphere *)malloc(sizeof(t_sphere));
 	if (!obj || !sp)
 	{
-		free(obj);
-		free(sp);
-		return ;
+		perror("malloc");
+		exit(EXIT_FAILURE);
 	}
 	str_to_vec(&sp->center, strv[1]);
 	sp->diameter = atof(strv[2]);
@@ -61,21 +67,18 @@ void	parse_cylinder(t_data *data, char *strv[])
 {
 	t_obj		*obj;
 	t_cylinder	*cy;
+	int		isform;
 
+	// isform = 
+	if (!isform)
+		ft_error("Invalid 'cylinder' description");
 	obj = (t_obj *)malloc(sizeof(t_obj));
 	cy = (t_cylinder *)malloc(sizeof(t_cylinder));
 	if (!obj || !cy)
 	{
-		free(obj);
-		free(cy);
-		return ;
+		perror("malloc");
+		exit(EXIT_FAILURE);
 	}
-<<<<<<< HEAD
-	str_to_vec(&cy->center, strv[1]);
-	str_to_vec(&cy->normal, strv[2]);
-	cy->height = atof(strv[3]);
-	cy->diameter = atof(strv[4]);
-=======
 	cy->center.i  = atof(strtok(strv[1], ","));
 	cy->center.j  = atof(strtok(NULL, ","));
 	cy->center.k  = atof(strtok(NULL, ","));
@@ -84,7 +87,6 @@ void	parse_cylinder(t_data *data, char *strv[])
 	cy->normal.k  = atof(strtok(NULL, ","));
 	cy->diameter = atof(strv[3]);
 	cy->height = atof(strv[4]);
->>>>>>> 4dcdff54738f636ebee6b61fc1501d24eb977d38
 	cy->radius = cy->diameter / 2;
 	obj->type = TYPE_CY;
 	obj->info = cy;
