@@ -6,7 +6,7 @@
 #    By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/03 14:45:59 by hyeonsok          #+#    #+#              #
-#    Updated: 2022/01/12 17:44:15 by hyeonsok         ###   ########.fr        #
+#    Updated: 2022/01/17 16:06:31 by hyeonsok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,11 +31,15 @@ OBJS	= $(addprefix $(OBJDIR)/, \
 			parse.o \
 			parse_obj.o \
 			parse_uni.o \
+			parse_util.o \
 			listen_event.o \
 			get_next_line.o \
 			ft_strvfree.o \
 			ft_error.o \
 			ft_split.o \
+			ft_irange.o \
+			ft_drange.o \
+			ft_atof.o \
 			mlx_img_pixel_put.o \
 			mlx_pixel_color.o \
 			vec_calculate.o \

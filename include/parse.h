@@ -6,14 +6,14 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 18:44:44 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/12 17:14:18 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/17 16:10:44 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSE_H
 # define PARSE_H
 
-#include "minirt.h"
+#include "libftx.h"
 
 typedef enum e_type {
 	TYPE_SP,
@@ -124,5 +124,8 @@ void	parse_plane(t_data *data, char *strv[]);
 void	parse_sphere(t_data *data, char *strv[]);
 void	parse_cylinder(t_data *data, char *strv[]);
 void	add_object_front(t_obj **first_obj, t_obj *new);
+
+void    str_to_vec(t_vec *vec, char *str);
+void	str_to_color(t_color *color, char *str);
 
 #endif

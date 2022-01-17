@@ -6,7 +6,7 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 14:38:12 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/13 17:31:15 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/17 16:06:43 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 #include "libftx.h"
 #include "vec.h"
 #include "parse.h"
-#include "draw.h"
+// #include "draw.h"
 
 # ifndef WIN_SIZE_X
 #  define WIN_SIZE_X 1920

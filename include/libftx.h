@@ -6,7 +6,7 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 14:42:29 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/12 09:54:16 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/17 16:06:13 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
+#include <ctype.h>
 
 // #include "libft.h"
 #include "mlx.h"
@@ -57,6 +58,9 @@ int		mlx_pixel_color(t_color *color);
 /** libft extension */
 void	ft_error(char *str);
 void	ft_strvfree(char *strv[]);
+double	ft_atof(char *str);
+int		ft_drange(double n, double max, double min);
+int		ft_irange(int n, int max, int min);
 
 #define BUFFER_SIZE 1024
 
