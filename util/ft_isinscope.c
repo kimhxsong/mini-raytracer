@@ -1,21 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_img_pixel_put.c                                :+:      :+:    :+:   */
+/*   ft_isinscope.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/03 15:13:18 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/16 17:05:43 by yookim           ###   ########.fr       */
+/*   Created: 2022/01/17 18:54:40 by hyeonsok          #+#    #+#             */
+/*   Updated: 2022/01/17 18:55:15 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftx.h"
-
-void    mlx_img_pixel_put(t_img *img, int color, int x, int y)
+int ft_isinscope(double num, double max, double min)
 {
-	char	*dest;
-
-	dest = img->addr + (y * img->width + x * (img->bpp / 8));
-	*(unsigned int *)dest = color;
+    return (num <= max && num >= min);
 }

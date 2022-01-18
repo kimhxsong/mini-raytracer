@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_img_pixel_put.c                                :+:      :+:    :+:   */
+/*   ft_strtocolor.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/03 15:13:18 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/16 17:05:43 by yookim           ###   ########.fr       */
+/*   Created: 2022/01/17 19:06:14 by hyeonsok          #+#    #+#             */
+/*   Updated: 2022/01/17 19:09:41 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftx.h"
 
-void    mlx_img_pixel_put(t_img *img, int color, int x, int y)
+t_color ft_strtocolor(char *str)
 {
-	char	*dest;
+	t_color	color;
 
-	dest = img->addr + (y * img->width + x * (img->bpp / 8));
-	*(unsigned int *)dest = color;
+	color.t = 0;
+	color.r = atof(strtok(str, ","));
+	color.g = atof(strtok(NULL, ","));
+	color.b = atof(strtok(NULL, ","));
+    return (color);
 }

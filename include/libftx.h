@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libftx.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 14:42:29 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/12 09:54:16 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/18 12:14:21 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
+#include <ctype.h>
 
 // #include "libft.h"
 #include "mlx.h"
@@ -42,21 +43,29 @@ struct s_img {
 	int		endian;
 };
 
+// double로 바꿈
 struct s_color {
-	int	t;
-	int	r;
-	int	g;
-	int	b;
+	double t;
+	double r;
+	double g;
+	double b;
 };
 
 /** mlx extenstion */
-void	mlx_img_pixel_put(t_img *img, t_color *color, int x, int y);
 void	mlx_img_init(void *mlx_ptr, t_win *win, t_img *img);
-int		mlx_pixel_color(t_color *color);
+void    mlx_img_pixel_put(t_img *img, int color, int x, int y);
+int		convert_rgb(t_color color);
 
 /** libft extension */
 void	ft_error(char *str);
+void	ft_fatal(const char *str);
+size_t  ft_strvlen(char **strv);
 void	ft_strvfree(char *strv[]);
+double	ft_atof(char *str);
+int		ft_isinscope(double n, double max, double min);
+int		ft_issign(int c);
+t_color	ft_strtocolor(char *str);
+t_vec	ft_strtovec(char *str);
 
 #define BUFFER_SIZE 1024
 
