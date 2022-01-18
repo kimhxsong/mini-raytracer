@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_obj.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 13:26:56 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/17 19:30:27 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/18 12:15:28 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,21 @@ void	parse_plane(t_data *data, char *strv[])
 	t_plane	*pl;
 	int		isform;
 
-	// isform = 
+	if (ft_strvlen(strv) != 4)
+		ft_error("Invalid 'plane' description");
+	isform = ft_isvecform(strv[1]) && ft_isvecform(strv[2]) \
+		&& ft_iscolorform(strv[3]);
 	if (!isform)
 		ft_error("Invalid 'plane' description");
 	obj = (t_obj *)malloc(sizeof(t_obj));
 	pl = (t_plane *)malloc(sizeof(t_plane));
 	if (!obj || !pl)
-	{
-		perror("malloc");
-		exit(EXIT_FAILURE);
-	}
-	str_to_vec(&pl->center, strv[1]);
-	str_to_vec(&pl->normal, strv[2]);
+		ft_fatal("malloc");
+	pl->center = ft_strtovec(strv[1]);
+	pl->normal = ft_strtovec(strv[2]);
+	obj->color = ft_strtocolor(strv[3]);
 	obj->type = TYPE_PL;
 	obj->info = pl;
-	str_to_color(&obj->color, strv[3]);
 	obj->next = NULL;
 	add_object_front(&data->first_obj, obj);
 }
@@ -43,22 +43,22 @@ void	parse_sphere(t_data *data, char *strv[])
 	t_sphere	*sp;
 	int		isform;
 
-	// isform = 
+	if (ft_strvlen(strv) != 4)
+		ft_error("Invalid 'sphere' description");
+	isform = ft_isvecform(strv[1]) && ft_isfloatform(strv[2]) \
+		&& ft_iscolorform(strv[3]);
 	if (!isform)
 		ft_error("Invalid 'sphere' description");
 	obj = (t_obj *)malloc(sizeof(t_obj));
 	sp = (t_sphere *)malloc(sizeof(t_sphere));
 	if (!obj || !sp)
-	{
-		perror("malloc");
-		exit(EXIT_FAILURE);
-	}
-	str_to_vec(&sp->center, strv[1]);
-	sp->diameter = atof(strv[2]);
+		ft_fatal("malloc");
+	sp->center = ft_strtovec(strv[1]);
+	sp->diameter = ft_atof(strv[2]);
+	obj->color = ft_strtocolor(strv[3]);
 	sp->radius = sp->diameter / 2;
 	obj->type = TYPE_SP;
 	obj->info = sp;
-	str_to_color(&obj->color, strv[3]);
 	obj->next = NULL;
 	add_object_front(&data->first_obj, obj);
 }
@@ -69,28 +69,25 @@ void	parse_cylinder(t_data *data, char *strv[])
 	t_cylinder	*cy;
 	int		isform;
 
-	// isform = 
+	if (ft_strvlen(strv) != 6)
+		ft_error("Invalid 'cylinder' description");
+	isform = ft_isvecform(strv[1]) && ft_isvecform(strv[2]) \
+		&& ft_isfloatform(strv[3]) && ft_isfloatform(strv[4])
+		&& ft_iscolorform(strv[5]);
 	if (!isform)
 		ft_error("Invalid 'cylinder' description");
 	obj = (t_obj *)malloc(sizeof(t_obj));
 	cy = (t_cylinder *)malloc(sizeof(t_cylinder));
 	if (!obj || !cy)
-	{
-		perror("malloc");
-		exit(EXIT_FAILURE);
-	}
-	cy->center.i  = atof(strtok(strv[1], ","));
-	cy->center.j  = atof(strtok(NULL, ","));
-	cy->center.k  = atof(strtok(NULL, ","));
-	cy->normal.i  = atof(strtok(strv[2], ","));
-	cy->normal.j  = atof(strtok(NULL, ","));
-	cy->normal.k  = atof(strtok(NULL, ","));
-	cy->diameter = atof(strv[3]);
-	cy->height = atof(strv[4]);
+		ft_fatal("malloc");
+	cy->center = ft_strtovec(strv[1]);
+	cy->normal = ft_strtovec(strv[2]);
+	cy->diameter = ft_atof(strv[3]);
+	cy->height = ft_atof(strv[4]);
+	obj->color = ft_strtocolor(strv[5]);
 	cy->radius = cy->diameter / 2;
 	obj->type = TYPE_CY;
 	obj->info = cy;
-	str_to_color(&obj->color, strv[5]);
 	obj->next = NULL;
 	add_object_front(&data->first_obj, obj);
 }
@@ -101,3 +98,7 @@ void	add_object_front(t_obj **first_obj, t_obj *new)
 		new->next = *first_obj;
 	*first_obj = new;
 }
+
+// object포맷에 맞춘다음 파싱 잘 되는지 확인하기.
+// 그리고 나서 해야할 일은 libft가져와서 이식하기.
+// 그리고 해야할 일은 진짜로 잘 된건지 확인하기.

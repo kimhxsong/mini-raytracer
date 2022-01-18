@@ -3,13 +3,12 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+         #
+#    By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/03 14:45:59 by hyeonsok          #+#    #+#              #
-#    Updated: 2022/01/17 16:16:44 by hyeonsok         ###   ########.fr        #
+#    Updated: 2022/01/18 12:14:08 by hyeonsok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
 
 CC = gcc -g3
 # CFLAGS = -Wall -Werror -Wextra
@@ -36,9 +35,13 @@ OBJS	= $(addprefix $(OBJDIR)/, \
 			get_next_line.o \
 			ft_strvfree.o \
 			ft_error.o \
+			ft_fatal.o \
 			ft_split.o \
-			ft_irange.o \
-			ft_drange.o \
+			ft_strtocolor.o \
+			ft_strtovec.o \
+			ft_strvlen.o \
+			ft_issign.o \
+			ft_isinscope.o \
 			ft_atof.o \
 			mlx_img_pixel_put.o \
 			convert_rgb.o \

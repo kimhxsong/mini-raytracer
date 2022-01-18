@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libftx.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 14:42:29 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/17 19:43:37 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/18 12:14:21 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int		convert_rgb(t_color color);
 
 /** libft extension */
 void	ft_error(char *str);
+void	ft_fatal(const char *str);
 size_t  ft_strvlen(char **strv);
 void	ft_strvfree(char *strv[]);
 double	ft_atof(char *str);

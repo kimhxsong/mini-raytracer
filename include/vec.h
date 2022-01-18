@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   vec.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 16:39:44 by yookim            #+#    #+#             */
-/*   Updated: 2022/01/13 18:03:26 by yookim           ###   ########.fr       */
+/*   Updated: 2022/01/18 10:50:34 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VEC_H
 # define VEC_H
 
-#include "libftx.h"
+#include <math.h>
 
 typedef struct s_vec t_vec;
 typedef struct s_vec t_point;

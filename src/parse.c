@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 18:27:41 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/17 19:52:23 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/18 12:17:20 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,15 @@
 
 static void	handle_invalid(t_data *data, char *strv[])
 {
+	if (!strv || !*strv)
+		return ;
 	ft_error("Invalid identifier");
 }
 
 static int	get_id(char *id)
 {
+	if (!id)
+		return (SPEC_NO);
 	if (strcmp("A", id) == 0)
 		return (SPEC_A);
 	if (strcmp("C", id) == 0)
@@ -52,17 +56,14 @@ void	parse(int fd, t_data *data)
 	void	(*fp[7])(t_data *, char *[]);
 
 	if (fd < 0)
-	{
-		perror("open");
-		exit(1);
-	}
+		ft_fatal("open");
 	line = get_next_line(fd);
 	if (!line)
 		ft_error("Empty file");
 	init_funcptr(fp);
 	while (line && *line)
 	{
-		strv = ft_split(line, " \t");
+		strv = ft_split(line, " \t\n");
 		free(line);
 		fp[get_id(strv[0])](data, strv);
 		ft_strvfree(strv);
