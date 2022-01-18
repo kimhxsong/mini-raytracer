@@ -6,7 +6,7 @@
 /*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 13:26:56 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/18 12:15:28 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/18 12:30:55 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,3 @@ void	add_object_front(t_obj **first_obj, t_obj *new)
 		new->next = *first_obj;
 	*first_obj = new;
 }
-
-// object포맷에 맞춘다음 파싱 잘 되는지 확인하기.
-// 그리고 나서 해야할 일은 libft가져와서 이식하기.
-// 그리고 해야할 일은 진짜로 잘 된건지 확인하기.

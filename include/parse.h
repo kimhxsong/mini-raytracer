@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 18:44:44 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/17 19:50:35 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/18 13:17:53 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 # define PARSE_H
 
 # include "libftx.h"
+
 # define FOCAL_LEN 1.0f
+
 typedef enum e_type {
 	TYPE_SP,
 	TYPE_PL,
@@ -70,12 +72,14 @@ struct s_light
 {
 	t_vec	spot;
 	double	ratio;
+	int		count;
 };
 
 struct s_ambient
 {
 	double	ratio;
 	t_color	color;
+	int		count;
 };
 
 struct s_obj {
@@ -105,6 +109,7 @@ struct s_view {
 struct s_scene {
 	t_cam	cam;
 	t_view	view;
+	int		count;
 };
 
 typedef struct s_ray

@@ -6,7 +6,7 @@
 /*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 16:22:27 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/18 12:10:22 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/18 12:51:35 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 
 void	parse_ambient(t_data *data, char *strv[])
 {
-	static int	count;
 	int			isform;
 
-	if (count++)
+	if (data->ambient.count++)
 		ft_error("More than once an uppercase identifier is declared");
 	if (ft_strvlen(strv) != 3)
 		ft_error("Invalid 'Ambient light' description\n");
@@ -30,10 +29,9 @@ void	parse_ambient(t_data *data, char *strv[])
 
 void	parse_camera(t_data *data, char *strv[])
 {
-	static int	count;
 	int			isform;
 
-	if (count++)
+	if (data->scene.count++)
 		ft_error("More than once an uppercase identifier is declared");
 	if (ft_strvlen(strv) != 4)
 		ft_error("Invalid 'Camera' description\n");
@@ -50,10 +48,9 @@ void	parse_camera(t_data *data, char *strv[])
 
 void	parse_light(t_data *data, char *strv[])
 {
-	static int	count;
 	int			isform;
 
-	if (count++)
+	if (data->light.count++)
 		ft_error("More than once an uppercase identifier is declared");
 	if (ft_strvlen(strv) != 3)
 		ft_error("Invalid 'Light' description\n");

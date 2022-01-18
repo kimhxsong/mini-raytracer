@@ -6,7 +6,7 @@
 /*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 18:27:41 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/18 12:17:20 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/18 12:46:13 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 static void	handle_invalid(t_data *data, char *strv[])
 {
-	if (!strv || !*strv)
+	if (!strv || !*strv || **strv == '#')
 		return ;
 	ft_error("Invalid identifier");
 }
 
 static int	get_id(char *id)
 {
-	if (!id)
+	if (!id || *id == '#')
 		return (SPEC_NO);
 	if (strcmp("A", id) == 0)
 		return (SPEC_A);
@@ -61,13 +61,18 @@ void	parse(int fd, t_data *data)
 	if (!line)
 		ft_error("Empty file");
 	init_funcptr(fp);
-	while (line && *line)
+	while (line)
 	{
 		strv = ft_split(line, " \t\n");
 		free(line);
 		fp[get_id(strv[0])](data, strv);
 		ft_strvfree(strv);
 		line = get_next_line(fd);
+	}
+	if (!data->scene.count || !data->ambient.count || !data->light.count)
+	{
+		system("leaks miniRT");
+		ft_error("One or more identifiers are not declared.");
 	}
 	close(fd);
 }
