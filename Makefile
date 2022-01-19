@@ -28,8 +28,12 @@ OBJS	= $(addprefix $(OBJDIR)/, \
 			init_data.o \
 			init_scene.o \
 			parse.o \
-			parse_obj.o \
-			parse_uni.o \
+			parse_ambient.o \
+			parse_camera.o \
+			parse_cylinder.o \
+			parse_light.o \
+			parse_plane.o \
+			parse_sphere.o \
 			parse_util.o \
 			listen_event.o \
 			get_next_line.o \
@@ -40,6 +44,8 @@ OBJS	= $(addprefix $(OBJDIR)/, \
 			ft_strtocolor.o \
 			ft_strtovec.o \
 			ft_strvlen.o \
+			ft_iscolor.o \
+			ft_isunitvec.o \
 			ft_issign.o \
 			ft_isinscope.o \
 			ft_atof.o \

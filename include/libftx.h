@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libftx.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 14:42:29 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/18 12:14:21 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/19 15:40:36 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,9 @@ int		ft_isinscope(double n, double max, double min);
 int		ft_issign(int c);
 t_color	ft_strtocolor(char *str);
 t_vec	ft_strtovec(char *str);
+
+int		ft_isunitvec(t_vec vec);
+int		ft_iscolor(t_color color);
 
 #define BUFFER_SIZE 1024
 
