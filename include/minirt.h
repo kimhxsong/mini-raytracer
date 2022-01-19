@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 14:38:12 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/19 02:03:02 by yookim           ###   ########.fr       */
+/*   Updated: 2022/01/19 17:29:28 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,6 @@
 
 
 #include "libftx.h"
-#include "vec.h"
-#include "parse.h"
-#include "draw.h"
-#include "hit.h"
-#include "light.h"
-
 
 # ifndef WIN_SIZE_X
 #  define WIN_SIZE_X 1920
@@ -42,8 +36,6 @@
 # define FALSE 0
 # define EPSILON 1e-6
 # define LUMEN 3
-
-#include "libftx.h"
 
 typedef enum e_type {
 	TYPE_SP,
@@ -171,6 +163,7 @@ struct s_data {
 #include "parse.h"
 #include "draw.h"
 #include "hit.h"
+#include "light.h"
 
 void    init_data(char *argv[], t_data *data);
 void    init_scene(t_data *data);
