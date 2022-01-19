@@ -3,17 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_util.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 19:21:14 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/18 11:51:09 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/19 14:50:41 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <ctype.h>
-#include <string.h>
-#include "parse.h"
+#include "minirt.h"
 
 int	ft_isvecform(char *str)
 {
@@ -37,13 +34,12 @@ int	ft_isvecform(char *str)
 	return (0);
 }
 
-
 int	ft_isfloatform(char *str)
 {
 	int	i;
 
 	str += ft_issign(*str);
-	while(isdigit(*str))
+	while (isdigit(*str))
 		++str;
 	str += *str == '.';
 	while (isdigit(*str))
@@ -59,7 +55,7 @@ int	ft_isintform(char *str)
 
 	maxlen = 10;
 	str += ft_issign(*str);
-	while(isdigit(*str) && maxlen-- > 0)
+	while (isdigit(*str) && maxlen-- > 0)
 		++str;
 	if (!*str)
 		return (1);
@@ -71,7 +67,7 @@ int	ft_iscolorform(char *str)
 	char	*token;
 	char	*dup;
 	int		count;
-	
+
 	dup = strdup(str);
 	count = 3;
 	token = strtok(dup, ",\n");
@@ -86,4 +82,11 @@ int	ft_iscolorform(char *str)
 	if (!count && !token)
 		return (1);
 	return (0);
+}
+
+void	add_object_front(t_obj **first_obj, t_obj *new)
+{
+	if (*first_obj)
+		new->next = *first_obj;
+	*first_obj = new;
 }
