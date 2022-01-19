@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert_rgb.c                                      :+:      :+:    :+:   */
+/*   ft_strtovec.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/03 15:19:22 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/19 02:08:27 by yookim           ###   ########.fr       */
+/*   Created: 2022/01/17 19:06:10 by hyeonsok          #+#    #+#             */
+/*   Updated: 2022/01/17 19:09:22 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftx.h"
 
-int		convert_rgb(t_color color)
+t_vec   ft_strtovec(char *str)
 {
-	int t;
-	int	r;
-	int	g;
-	int	b;
+	t_vec	vec;
 
-	t = (int)(color.t * 255.999);
-	r = (int)(color.r * 255.999);
-	g = (int)(color.g * 255.999);
-	b = (int)(color.b * 255.999);
-	return (t << 24 | r << 16 | g << 8 | b);
+	vec.i  = atof(strtok(str, ","));
+	vec.j  = atof(strtok(NULL, ","));
+	vec.k  = atof(strtok(NULL, ","));
+    return (vec);
 }

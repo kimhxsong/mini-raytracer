@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libftx.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 14:42:29 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/17 10:33:37 by yookim           ###   ########.fr       */
+/*   Updated: 2022/01/18 12:14:21 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
+#include <ctype.h>
 
 // #include "libft.h"
 #include "mlx.h"
@@ -57,7 +58,14 @@ int		convert_rgb(t_color color);
 
 /** libft extension */
 void	ft_error(char *str);
+void	ft_fatal(const char *str);
+size_t  ft_strvlen(char **strv);
 void	ft_strvfree(char *strv[]);
+double	ft_atof(char *str);
+int		ft_isinscope(double n, double max, double min);
+int		ft_issign(int c);
+t_color	ft_strtocolor(char *str);
+t_vec	ft_strtovec(char *str);
 
 #define BUFFER_SIZE 1024
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 17:19:59 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/12 17:03:13 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/18 12:16:33 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,7 @@ static void	init_mlx(t_data *data)
 {
 	data->mlx_ptr = mlx_init();
 	if (!data->mlx_ptr)
-	{
-		perror("mlx_init");
-		exit(EXIT_FAILURE);
-	}
+		ft_fatal("mlx_init");
 }
 
 static void	init_win(t_data *data)
@@ -29,10 +26,7 @@ static void	init_win(t_data *data)
 	data->win.ptr = mlx_new_window(data->mlx_ptr, data->win.width, \
 		data->win.height, "m!n!RT");
 	if (!data->win.ptr)
-	{
-		perror("mlx_new_window");
-		exit(EXIT_FAILURE);
-	}
+		ft_fatal("mlx_new_window");
 }
 
 static void	init_img(t_data *data)
@@ -40,20 +34,11 @@ static void	init_img(t_data *data)
 	data->img.ptr = \
 		mlx_new_image(data->mlx_ptr, data->win.width, data->win.height);
 	if (!data->img.ptr)
-	{
-		perror("mlx_new_image");
-		mlx_destroy_window(data->mlx_ptr, data->win.ptr);
-		exit(EXIT_FAILURE);
-	}
+		ft_fatal("mlx_new_image");
 	data->img.addr = mlx_get_data_addr(\
 		data->img.ptr, &data->img.bpp, &data->img.width, &data->img.endian);
 	if (!data->img.addr)
-	{
-		perror("mlx_get_data_addr");
-		mlx_destroy_window(data->mlx_ptr, data->win.ptr);
-		mlx_destroy_image(data->mlx_ptr, data->img.ptr);
-		exit(EXIT_FAILURE);
-	}
+		ft_fatal("mlx_get_data_addr");
 }
 
 void	init_data(char *argv[], t_data *data)

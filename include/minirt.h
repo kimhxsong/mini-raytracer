@@ -6,7 +6,7 @@
 /*   By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 14:38:12 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/16 19:03:52 by yookim           ###   ########.fr       */
+/*   Updated: 2022/01/19 02:03:02 by yookim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 #include "parse.h"
 #include "draw.h"
 #include "hit.h"
+#include "light.h"
 
 # ifndef WIN_SIZE_X
 #  define WIN_SIZE_X 1920

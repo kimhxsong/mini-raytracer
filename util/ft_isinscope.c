@@ -1,30 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strvfree.c                                      :+:      :+:    :+:   */
+/*   ft_isinscope.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/12 09:51:06 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/18 11:30:20 by hyeonsok         ###   ########.fr       */
+/*   Created: 2022/01/17 18:54:40 by hyeonsok          #+#    #+#             */
+/*   Updated: 2022/01/17 18:55:15 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftx.h"
-
-void	ft_strvfree(char *strv[])
+int ft_isinscope(double num, double max, double min)
 {
-	int i;
-
-	if (!strv)
-		return ;
-	i = -1;
-	while (strv[++i])
-	{
-		free(strv[i]);
-		strv[i] = NULL;
-	}
-	free(strv[i]);
-	strv[i] = NULL;
-	free(strv);
+    return (num <= max && num >= min);
 }

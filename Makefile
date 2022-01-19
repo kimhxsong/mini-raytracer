@@ -6,10 +6,9 @@
 #    By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/03 14:45:59 by hyeonsok          #+#    #+#              #
-#    Updated: 2022/01/17 10:35:39 by yookim           ###   ########.fr        #
+#    Updated: 2022/01/19 02:02:08 by yookim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
 
 CC = gcc -g3
 # CFLAGS = -Wall -Werror -Wextra
@@ -31,18 +30,29 @@ OBJS	= $(addprefix $(OBJDIR)/, \
 			parse.o \
 			parse_obj.o \
 			parse_uni.o \
+			parse_util.o \
 			listen_event.o \
 			get_next_line.o \
 			ft_strvfree.o \
 			ft_error.o \
+			ft_fatal.o \
 			ft_split.o \
+			ft_strtocolor.o \
+			ft_strtovec.o \
+			ft_strvlen.o \
+			ft_issign.o \
+			ft_isinscope.o \
+			ft_atof.o \
 			mlx_img_pixel_put.o \
 			convert_rgb.o \
 			vec_calculate.o \
 			vec_operator.o \
 			draw.o \
 			hit.o \
-			light.o)
+			light.o \
+			hit_cylinder.o\
+			hit_plane.o \
+			hit_sphere.o)
 
 NAME = miniRT
 

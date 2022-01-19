@@ -3,17 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 18:44:44 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/17 10:06:34 by yookim           ###   ########.fr       */
+/*   Updated: 2022/01/18 13:17:53 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSE_H
 # define PARSE_H
 
-#include "minirt.h"
+# include "libftx.h"
+
+# define FOCAL_LEN 1.0f
 
 typedef enum e_type {
 	TYPE_SP,
@@ -70,12 +72,14 @@ struct s_light
 {
 	t_vec	spot;
 	double	ratio;
+	int		count;
 };
 
 struct s_ambient
 {
 	double	ratio;
 	t_color	color;
+	int		count;
 };
 
 struct s_obj {
@@ -105,6 +109,7 @@ struct s_view {
 struct s_scene {
 	t_cam	cam;
 	t_view	view;
+	int		count;
 };
 
 typedef struct s_ray
@@ -145,5 +150,10 @@ void	parse_plane(t_data *data, char *strv[]);
 void	parse_sphere(t_data *data, char *strv[]);
 void	parse_cylinder(t_data *data, char *strv[]);
 void	add_object_front(t_obj **first_obj, t_obj *new);
+
+int		ft_isfloatform(char *str);
+int		ft_isvecform(char *str);
+int		ft_iscolorform(char *str);
+int		ft_isintform(char *str);
 
 #endif
