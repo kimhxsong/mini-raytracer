@@ -6,7 +6,7 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 13:37:09 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/19 14:43:51 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/19 15:49:27 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,13 @@ static void	init_obj_cylinder(t_data *data, char *strv[])
 		ft_fatal("malloc");
 	cy->center = ft_strtovec(strv[1]);
 	cy->normal = ft_strtovec(strv[2]);
+	if (!ft_isunitvec(cy->normal))
+		ft_error("Invalid 'cylinder'  3d normalized orientation vector");
 	cy->diameter = ft_atof(strv[3]);
 	cy->height = ft_atof(strv[4]);
 	obj->color = ft_strtocolor(strv[5]);
+	if (!ft_iscolor(obj->color))
+		ft_error("Invalid 'cylinder' RGB");
 	cy->radius = cy->diameter / 2;
 	obj->type = TYPE_CY;
 	obj->info = cy;

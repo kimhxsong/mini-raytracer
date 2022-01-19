@@ -6,7 +6,7 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 13:37:12 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/19 14:43:01 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/19 15:49:14 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,11 @@ static void	init_camera(t_cam *cam, char *strv[])
 {
 	cam->origin = ft_strtovec(strv[1]);
 	cam->dir = ft_strtovec(strv[2]);
+	if (!ft_isunitvec(cam->dir))
+		ft_error("Invalid 'Camera' 3d normalized orientation vector");
 	cam->fov = ft_atof(strv[3]);
+	if (!ft_isinscope(cam->fov, 180, 0))
+		ft_error("Invalid 'Camera' FOV");
 	cam->up.j = 1.0f;
 	cam->focal_len = FOCAL_LEN;
 }

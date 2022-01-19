@@ -6,7 +6,7 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 13:37:02 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/19 14:46:56 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/19 15:50:58 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ static void	init_obj_sphere(t_data *data, char *strv[])
 	sp->center = ft_strtovec(strv[1]);
 	sp->diameter = ft_atof(strv[2]);
 	obj->color = ft_strtocolor(strv[3]);
+	if (!ft_iscolor(obj->color))
+		ft_error("Invalid 'sphere' RGB");
 	sp->radius = sp->diameter / 2;
 	obj->type = TYPE_SP;
 	obj->info = sp;

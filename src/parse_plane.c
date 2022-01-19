@@ -6,7 +6,7 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 13:37:04 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/19 14:48:10 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/19 15:52:15 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,11 @@ static void	init_obj_plane(t_data *data, char *strv[])
 		ft_fatal("malloc");
 	pl->center = ft_strtovec(strv[1]);
 	pl->normal = ft_strtovec(strv[2]);
+	if (!ft_isunitvec(pl->normal))
+		ft_error("Invalid 'plane' 3d normalized orientation vector");
 	obj->color = ft_strtocolor(strv[3]);
+	if (!ft_iscolor(obj->color))
+		ft_error("Invalid 'plane' RGB");
 	obj->type = TYPE_PL;
 	obj->info = pl;
 	obj->next = NULL;

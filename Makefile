@@ -6,7 +6,7 @@
 #    By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/03 14:45:59 by hyeonsok          #+#    #+#              #
-#    Updated: 2022/01/19 14:04:40 by hyeonsok         ###   ########.fr        #
+#    Updated: 2022/01/19 15:40:09 by hyeonsok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,8 @@ OBJS	= $(addprefix $(OBJDIR)/, \
 			ft_strtocolor.o \
 			ft_strtovec.o \
 			ft_strvlen.o \
+			ft_iscolor.o \
+			ft_isunitvec.o \
 			ft_issign.o \
 			ft_isinscope.o \
 			ft_atof.o \
