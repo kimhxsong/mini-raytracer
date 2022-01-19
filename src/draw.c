@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/19 02:09:10 by yookim            #+#    #+#             */
+/*   Updated: 2022/01/19 02:09:11 by yookim           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minirt.h"
 
-t_ray		ray(t_point orig, t_vec dir)
+t_ray	ray(t_point orig, t_vec dir)
 {
 	t_ray	ray;
 
@@ -9,27 +21,9 @@ t_ray		ray(t_point orig, t_vec dir)
 	return (ray);
 }
 
-t_ray ray_view(t_scene *scene, int i, int j)
+t_color	color(double t, double r, double g, double b)
 {
-    t_ray ray;
-
-    ray.orig = scene->cam.origin;
-	ray.dir = scene->view.matrix[j][i];
-    return (ray);
-}
-
-
-t_point ray_at(t_ray *ray, double t)
-{
-    t_point at;
-	// p(t) = orig + t * dir;
-    at = vec_plus(ray->orig, vec_mult(ray->dir, t));
-    return (at);
-}
-
-t_color		color(double t, double r, double g, double b)
-{
-	t_color color;
+	t_color	color;
 
 	color.t = t;
 	color.r = r;
@@ -47,25 +41,12 @@ t_hit_record	record_init(void)
 	return (record);
 }
 
-t_color		ray_color(t_data *data)
-{
-	data->rec = record_init();
-	if (hit(data->first_obj, &data->ray, &data->rec))
-		return (phong_lighting(data));
-		// return (data->first_obj->color); // phong_lighting의 문제?
-		// return(data->rec.color); // Yes
-	else
-		// return (color(0, 0, 0, 0));
-		return(color(0, 255, 255, 0)); // 임시 배경
-}
-
 void	draw_scene(t_data *data)
 {
-	t_ray	ray;
+	t_scene	scene;
 	int		i;
 	int		j;
-	t_scene  scene;
-	t_color pixel_color;
+	t_color	pixel_color;
 
 	scene = data->scene;
 	j = -1;
@@ -74,10 +55,17 @@ void	draw_scene(t_data *data)
 		i = -1;
 		while (++i < WIN_SIZE_X)
 		{
-			data->ray = ray_view(&scene, i, j);
-			pixel_color = ray_color(data);
+			data->ray = ray(scene.cam.origin, scene.view.matrix[j][i]);
+			data->rec = record_init();
+			if (hit(data->first_obj, &data->ray, &data->rec))
+				pixel_color = lighting(data);
+			else
+				pixel_color = color(0, 0, 0, 0);
 			mlx_img_pixel_put(&data->img, convert_rgb(pixel_color), i, j);
 		}
 	}
 	mlx_put_image_to_window(data->mlx_ptr, data->win.ptr, data->img.ptr, 0, 0);
 }
+
+// t = (double) j / WIN_SIZE_Y; // 임시 배경
+// pixel_color = vec_plus_c(vec_mult_c(color(0, 1, 1, 1), t), vec_mult_c(color(0, 0.5, 0.7, 1), 1 - t));

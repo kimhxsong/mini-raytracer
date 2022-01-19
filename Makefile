@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+         #
+#    By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/03 14:45:59 by hyeonsok          #+#    #+#              #
-#    Updated: 2022/01/19 15:40:09 by hyeonsok         ###   ########.fr        #
+#    Updated: 2022/01/19 02:02:08 by yookim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,10 @@ OBJS	= $(addprefix $(OBJDIR)/, \
 			vec_operator.o \
 			draw.o \
 			hit.o \
-			light.o)
+			light.o \
+			hit_cylinder.o\
+			hit_plane.o \
+			hit_sphere.o)
 
 NAME = miniRT
 
