@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/03 14:45:59 by hyeonsok          #+#    #+#              #
-#    Updated: 2022/01/18 12:14:08 by hyeonsok         ###   ########.fr        #
+#    Updated: 2022/01/19 14:04:40 by hyeonsok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,8 +28,12 @@ OBJS	= $(addprefix $(OBJDIR)/, \
 			init_data.o \
 			init_scene.o \
 			parse.o \
-			parse_obj.o \
-			parse_uni.o \
+			parse_ambient.o \
+			parse_camera.o \
+			parse_cylinder.o \
+			parse_light.o \
+			parse_plane.o \
+			parse_sphere.o \
 			parse_util.o \
 			listen_event.o \
 			get_next_line.o \
