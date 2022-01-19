@@ -6,7 +6,7 @@
 /*   By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 02:09:34 by yookim            #+#    #+#             */
-/*   Updated: 2022/01/19 02:09:34 by yookim           ###   ########.fr       */
+/*   Updated: 2022/01/19 17:45:53 by yookim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ t_color	lighting(t_data *data)
 
 	if (in_shadow(data))
 		return (color(0, 0, 0, 0));
-	ambient = vec_mult_c(color(0, 1, 1, 1), data->ambient.ratio);
+	ambient = vec_mult_c(data->ambient.color, data->ambient.ratio);
 	diffuse = lighting_diffuse(data);
 	brightness = data->light.ratio * LUMEN;
 	light_color = vec_mult_c(vec_plus_c(ambient, diffuse), brightness);
