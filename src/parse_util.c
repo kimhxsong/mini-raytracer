@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_util.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 19:21:14 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/19 14:50:41 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/26 05:17:26 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@ int	ft_isvecform(char *str)
 	char	*token;
 	int		count;
 
-	dup = strdup(str);
+	dup = ft_strdup(str);
 	count = 3;
-	token = strtok(dup, ",");
+	token = ft_strtok(dup, ",");
 	while (count > 0 && token)
 	{
 		if (!ft_isfloatform(token))
 			break ;
 		--count;
-		token = strtok(NULL, ",");
+		token = ft_strtok(NULL, ",");
 	}
 	free(dup);
 	if (!count && !token)
@@ -42,7 +42,7 @@ int	ft_isfloatform(char *str)
 	while (isdigit(*str))
 		++str;
 	str += *str == '.';
-	while (isdigit(*str))
+	while (ft_isdigit(*str))
 		++str;
 	if (!*str)
 		return (1);
@@ -55,7 +55,7 @@ int	ft_isintform(char *str)
 
 	maxlen = 10;
 	str += ft_issign(*str);
-	while (isdigit(*str) && maxlen-- > 0)
+	while (ft_isdigit(*str) && maxlen-- > 0)
 		++str;
 	if (!*str)
 		return (1);
@@ -68,15 +68,15 @@ int	ft_iscolorform(char *str)
 	char	*dup;
 	int		count;
 
-	dup = strdup(str);
+	dup = ft_strdup(str);
 	count = 3;
-	token = strtok(dup, ",\n");
+	token = ft_strtok(dup, ",\n");
 	while (count > 0 && token)
 	{
 		if (!ft_isintform(token))
 			break ;
 		--count;
-		token = strtok(NULL, ",\n");
+		token = ft_strtok(NULL, ",\n");
 	}
 	free(dup);
 	if (!count && !token)

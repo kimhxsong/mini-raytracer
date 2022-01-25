@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 14:35:48 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/13 18:02:28 by yookim           ###   ########.fr       */
+/*   Updated: 2022/01/26 05:18:49 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	validate_args(int argc, char *argv[])
 
 	if (argc != 2)
 		ft_error("Invalid argument");
-	ext = strrchr(argv[1], '.');
+	ext = ft_strrchr(argv[1], '.');
 	if (!ext || strcmp(ext, ".rt"))
 		ft_error("Invalid file");
 }

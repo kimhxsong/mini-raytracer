@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 14:34:45 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/11 18:20:02 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/26 04:32:34 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 void	ft_error(char *str)
 {
-	write(2, "Error: ", 7);
-	write(2, str, strlen(str));
-	write(2, "\n", 1);
+	ft_dputs(2, "Error: ");
+	ft_dputendl(2, str);
 	exit(EXIT_FAILURE);
 }

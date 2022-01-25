@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isinscope.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 18:54:40 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/17 18:55:15 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/26 04:31:17 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int ft_isinscope(double num, double max, double min)
 {
-    return (num <= max && num >= min);
+	return (num <= max && num >= min);
 }
