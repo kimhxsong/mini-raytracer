@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_issign.c                                        :+:      :+:    :+:   */
+/*   ft_isgraph.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/17 18:54:42 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/17 18:55:06 by hyeonsok         ###   ########.fr       */
+/*   Created: 2021/11/04 19:56:02 by hyeonsok          #+#    #+#             */
+/*   Updated: 2022/01/25 01:21:15 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftx.h"
+#include "libft/ctype.h"
 
-int ft_issign(int c)
+int	ft_isgraph(int c)
 {
-    return (c == '+' || c == '-');
+	return ((unsigned char)c >= 33 && (unsigned char)c <= 126);
 }
