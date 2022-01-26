@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/26 11:13:05 by hyeonsok          #+#    #+#              #
-#    Updated: 2022/01/26 04:04:46 by hyeonsok         ###   ########.fr        #
+#    Updated: 2022/01/26 15:40:57 by hyeonsok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,8 @@ SRCS	+=	$(addprefix src/string/,	ft_bzero.c \
 										ft_strlen.c \
 										ft_strncmp.c \
 										ft_strnstr.c \
-										ft_strrchr.c)
+										ft_strrchr.c \
+										ft_strtok.c)
 
 SRCS	+=	$(addprefix src/util/,		ft_itoa.c \
 										ft_split.c \

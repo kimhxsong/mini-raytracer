@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   string.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 21:18:39 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/25 13:50:58 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/26 15:39:00 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,9 @@ char			*ft_strnstr(const char *haystack, const char *needle, \
 				size_t len);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 char			*ft_strdup(const char *s1);
+size_t			ft_strspn(const char *s, const char *charset);
+size_t			ft_strcspn(const char *s, char *charset);
+char			*ft_strpbrk(const char *s, const char *charset);
+char			*ft_strtok(const char *str, const char *sep);
 
 #endif
