@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 17:36:06 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/26 05:09:58 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/26 15:43:56 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftx.h"
 
-static char *strdupnl(char *str)
+static char *ft_strdupnl(char *str)
 {
 	char	*new;
 	size_t	len;
@@ -28,7 +28,7 @@ static char *strdupnl(char *str)
 	return (new);
 }
 
-static char	*strjoinnl(char *str1, char *str2)
+static char	*ft_strjoinnl(char *str1, char *str2)
 {
 	char	*join;
 	char	*temp;
@@ -36,10 +36,10 @@ static char	*strjoinnl(char *str1, char *str2)
 	if (!str1 && !str2)
 		return (NULL);
 	if (!str1 && str2)
-		return (strdupnl(str2));
+		return (ft_strdupnl(str2));
 	if (str1 && !str2)
-		return (strdupnl(str1));
-	join = (char *)malloc((strlen(str1) + strlen(str2) + 2) * sizeof(char));
+		return (ft_strdupnl(str1));
+	join = (char *)malloc((strlen(str1) + ft_strlen(str2) + 2) * sizeof(char));
 	if (!join)
 		return (NULL);
 	temp = join;

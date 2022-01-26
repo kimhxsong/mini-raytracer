@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 18:27:41 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/26 05:16:31 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/26 15:46:59 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,33 +19,33 @@ static void	parse_error(t_data *data, char *strv[])
 	ft_error("Invalid identifier");
 }
 
-static int	_id(char *id)
+static int	get_id(char *id)
 {
 	if (!id || *id == '#')
 		return (SPEC_NO);
-	if (ft_strcmp("A", id) == 0)
+	if (strcmp("A", id) == 0)
 		return (SPEC_A);
-	if (ft_strcmp("C", id) == 0)
+	if (strcmp("C", id) == 0)
 		return (SPEC_C);
-	if (ft_strcmp("L", id) == 0)
+	if (strcmp("L", id) == 0)
 		return (SPEC_L);
-	if (ft_strcmp("pl", id) == 0)
+	if (strcmp("pl", id) == 0)
 		return (SPEC_PL);
-	if (ft_strcmp("sp", id) == 0)
+	if (strcmp("sp", id) == 0)
 		return (SPEC_SP);
-	if (ft_strcmp("cy", id) == 0)
+	if (strcmp("cy", id) == 0)
 		return (SPEC_CY);
 	return (SPEC_NO);
 }
 
-static const void (*g_parse_object[7])(t_data *, char *[]) = { \
-	{parse_ambient}, \
-	{parse_camera}, \
-	{parse_light}, \
-	{parse_plane}, \
-	{parse_sphere}, \
-	{parse_cylinder}, \
-	{parse_error} \
+static void (*g_parser[7])(t_data *, char *[]) = { \
+	parse_ambient,
+	parse_camera,
+	parse_light,
+	parse_plane,
+	parse_sphere,
+	parse_cylinder,
+	parse_error
 };
 
 void	parse(int fd, t_data *data)
@@ -63,7 +63,7 @@ void	parse(int fd, t_data *data)
 	{
 		strv = ft_split(line, " \t\n");
 		free(line);
-		g_parse_object[get_id(strv[0])](data, strv);
+		g_parser[get_id(strv[0])](data, strv);
 		ft_strvfree(strv);
 		line = get_next_line(fd);
 	}
