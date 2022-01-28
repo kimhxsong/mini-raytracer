@@ -3,14 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/03 14:45:59 by hyeonsok          #+#    #+#              #
-<<<<<<< HEAD
-#    Updated: 2022/01/26 07:02:13 by yookim           ###   ########.fr        #
-=======
-#    Updated: 2022/01/26 04:02:58 by hyeonsok         ###   ########.fr        #
->>>>>>> b2ba20fb55c83f9671f4e5eebd02e3dd93cfa5e4
+#    Updated: 2022/01/28 12:55:40 by yookim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
