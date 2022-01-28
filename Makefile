@@ -3,19 +3,24 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+         #
+#    By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/03 14:45:59 by hyeonsok          #+#    #+#              #
+<<<<<<< HEAD
 #    Updated: 2022/01/26 07:02:13 by yookim           ###   ########.fr        #
+=======
+#    Updated: 2022/01/26 04:02:58 by hyeonsok         ###   ########.fr        #
+>>>>>>> b2ba20fb55c83f9671f4e5eebd02e3dd93cfa5e4
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc -g3
 # CFLAGS = -Wall -Werror -Wextra
 
-INCLUDES = -I./include/ -I./lib/minilibx_opengl_20191021/
-MLX = -lmlx -framework OpenGL -framework AppKit -L./lib/minilibx_opengl_20191021/
-LIBS = $(MLX)
+INCLUDES = -I./include/ -I./lib/minilibx_opengl_20191021/ -I./lib/libft/include/
+MLX	= -lmlx -framework OpenGL -framework AppKit -L./lib/minilibx_opengl_20191021/
+FT = -lft -L./lib/libft
+LIBS = $(MLX) $(FT)
 
 SRCDIR := ./src
 UTILDIR := ./util
@@ -41,13 +46,11 @@ OBJS	= $(addprefix $(OBJDIR)/, \
 			ft_strvfree.o \
 			ft_error.o \
 			ft_fatal.o \
-			ft_split.o \
 			ft_strtocolor.o \
 			ft_strtovec.o \
 			ft_strvlen.o \
 			ft_iscolor.o \
 			ft_isunitvec.o \
-			ft_issign.o \
 			ft_isinscope.o \
 			ft_atof.o \
 			mlx_img_pixel_put.o \
@@ -65,8 +68,11 @@ OBJS	= $(addprefix $(OBJDIR)/, \
 NAME = miniRT
 
 .PHONY:		all
-all:		mlx $(NAME)
+all:		libft mlx $(NAME)
 
+.PHONY:		libft
+libft:
+			@make -C ./lib/libft
 .PHONY:		mlx
 mlx:
 			@make -C ./lib/minilibx_opengl_20191021/
@@ -101,6 +107,7 @@ clean:
 .PHONY:		fclean
 fclean:		clean
 			@make clean -C ./lib/minilibx_opengl_20191021/
+			@make clean -C ./lib/libft
 			@$(RM) -r $(NAME)
 
 .PHONY:		re

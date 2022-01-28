@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vec_calculate.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 17:13:40 by yookim            #+#    #+#             */
-/*   Updated: 2022/01/06 20:16:22 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/26 05:08:40 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,5 @@ t_vec	vec_cal_unit(t_vec vec)
 
 double	vec_cal_len(t_vec vec)
 {
-	return (sqrt(powf(vec.i, 2) + powf(vec.j, 2) + powf(vec.k, 2)));
+	return (sqrt(pow(vec.i, 2) + pow(vec.j, 2) + pow(vec.k, 2)));
 }

@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/10 21:31:37 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/11 17:48:39 by hyeonsok         ###   ########.fr       */
+/*   Created: 2020/12/30 20:28:18 by hyeonsok          #+#    #+#             */
+/*   Updated: 2022/01/25 00:57:15 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftx.h"
+#include "libft.h"
+#include <string.h>
 
-static int	get_count(char *input, const char *sep)
+static int	get_count(const char *input, const char *sep)
 {
 	int	count;
 
@@ -36,7 +37,7 @@ static void	cleanup_tokarr(char **tokarr, int count)
 	free(tokarr);
 }
 
-static char	**fill_tokarr(char *input, const char *sep, char **tokarr)
+static char	**fill_tokarr(const char *input, const char *sep, char **tokarr)
 {
 	char	*token;
 	char	*copy;
@@ -63,7 +64,7 @@ static char	**fill_tokarr(char *input, const char *sep, char **tokarr)
 	return (tokarr);
 }
 
-char	**init_tokarr(char *input, const char *sep)
+char	**init_tokarr(const char *input, const char *sep)
 {
 	char	**tokarr;
 	int		count;
@@ -77,7 +78,7 @@ char	**init_tokarr(char *input, const char *sep)
 	return (tokarr);
 }
 
-char	**ft_split(char *input, const char *sep)
+char	**ft_split(const char *input, const char *sep)
 {
 	return (fill_tokarr(input, sep, init_tokarr(input, sep)));
 }

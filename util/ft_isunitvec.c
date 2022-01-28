@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isunitvec.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 15:21:10 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/19 15:41:19 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/01/26 04:31:07 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int ft_isunitvec(t_vec vec)
 {
-    if ((pow(vec.i, 2) + pow(vec.j, 2) + pow(vec.k, 2)) != 1)
-        return (0);
-    return (1);
+	if ((pow(vec.i, 2) + pow(vec.j, 2) + pow(vec.k, 2)) != 1)
+		return (0);
+	return (1);
 }
