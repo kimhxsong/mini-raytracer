@@ -6,7 +6,7 @@
 /*   By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 02:09:16 by yookim            #+#    #+#             */
-/*   Updated: 2022/01/19 02:09:17 by yookim           ###   ########.fr       */
+/*   Updated: 2022/01/26 06:55:21 by yookim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@ double	hit_cylinder_d(t_cylinder *cy, t_ray *ray, t_root type)
 
 	co = vec_minus(ray->orig, cy->center);
 	a = vec_dot(ray->dir, ray->dir) - pow(vec_dot(ray->dir, cy->normal), 2);
-	half_b = vec_dot(ray->dir, co) - (vec_dot(ray->dir, cy->normal) * vec_dot(co, cy->normal));
-	c = vec_dot(co, co) - pow(vec_dot(co, cy->normal), 2) - (cy->radius * cy->radius);
+	half_b = vec_dot(ray->dir, co)
+		- (vec_dot(ray->dir, cy->normal) * vec_dot(co, cy->normal));
+	c = vec_dot(co, co) - pow(vec_dot(co, cy->normal), 2)
+		- (cy->radius * cy->radius);
 	discriminant = half_b * half_b - a * c;
 	if (type == ROOT_SMALL)
 		return ((-half_b - sqrt(discriminant)) / a);
@@ -43,7 +45,8 @@ int	hit_cylinder_h(double root, t_cylinder *cy, t_ray *ray, t_hit_record *rec)
 		return (FALSE);
 	rec->t = root;
 	rec->p = p;
-	rec->normal = vec_cal_unit(vec_minus(p, vec_plus(cy->center, vec_mult(cy->normal, h_range))));
+	rec->normal = vec_cal_unit(vec_minus(p, \
+		vec_plus(cy->center, vec_mult(cy->normal, h_range))));
 	set_face_normal(ray, rec);
 	return (TRUE);
 }

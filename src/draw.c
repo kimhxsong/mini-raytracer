@@ -6,7 +6,7 @@
 /*   By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 02:09:10 by yookim            #+#    #+#             */
-/*   Updated: 2022/01/19 17:47:43 by yookim           ###   ########.fr       */
+/*   Updated: 2022/01/26 04:47:35 by yookim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,4 @@ void	draw_scene(t_data *data)
 }
 
 // t = (double) j / WIN_SIZE_Y; // 임시 배경
-// pixel_color = vec_plus_c(vec_mult_c(color(0, 1, 1, 1), t), vec_mult_c(color(0, 0.5, 0.7, 1), 1 - t));
+// pixel_color = col_plus(col_mult(color(0, 1, 1, 1), t), col_mult(color(0, 0.5, 0.7, 1), 1 - t));
