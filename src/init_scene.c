@@ -6,7 +6,7 @@
 /*   By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 14:11:56 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/26 08:44:55 by yookim           ###   ########.fr       */
+/*   Updated: 2022/01/28 18:22:09 by yookim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,23 +42,9 @@ static void	cleanup(t_data *data)
 static void	init_cam(t_cam *cam)
 {
 	cam->focal_len = 1.f;
-	if (cam->dir.j == -1 || cam->dir.j == 1)
-	{
-		cam->up.i = -1.f;
-		cam->up.j = 0.f;
-		cam->up.k = 0.f;
-	}
-	else
-	{
-		cam->up.i = 0.f;
-		cam->up.j = 1.f;
-		cam->up.k = 0.f;
-	}
-	// if (cam->dir.i == 0 && cam->dir.k == 0)
-	// 	cam->dir.k = 0.00001;
-	// cam->up.i = 0.f;
-	// cam->up.j = 1.f;
-	// cam->up.k = 0.f;
+	cam->up.i = 0.f;
+	cam->up.j = 1.f;
+	cam->up.k = 0.f;
 	cam->basis_k = vec_cal_unit(vec_mult(cam->dir, -1));
 	cam->basis_i = vec_cal_unit(vec_cross(cam->up, cam->basis_k));
 	cam->basis_j = vec_cross(cam->basis_k, cam->basis_i);
@@ -100,16 +86,15 @@ static void	init_view(t_scene *scene, double width, double height)
 	left_top = vec_minus(center, \
 		vec_plus(vec_mult(scene->cam.basis_i, scene->view.width * 0.5), \
 		vec_mult(scene->cam.basis_j, scene->view.height * -0.5)));
-
 	j = -1;
 	while (++j < height)
 	{
 		i = -1;
 		while (++i < width)
 		{
-			scene->view.matrix[j][i] = vec_plus(vec_plus(left_top, \
-				vec_mult(scene->cam.basis_i, i * scene->view.width / width)), \
-				vec_mult(scene->cam.basis_j, -j * scene->view.height / height));
+			scene->view.matrix[j][i] = vec_minus(vec_plus(vec_plus(left_top, \
+                vec_mult(scene->cam.basis_i, i * scene->view.width / width)), \
+                vec_mult(scene->cam.basis_j, -j * scene->view.height / height)), scene->cam.origin);
 		}
 	}
 }
