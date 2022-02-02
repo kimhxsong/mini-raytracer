@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 14:38:12 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/02/02 14:46:02 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/02/02 20:24:12 by yookim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@
 # ifndef WIN_SIZE_Y
 #  define WIN_SIZE_Y 1080
 # endif
-
-# define _USE_MATH_DEFINES
 
 # define ESC 53
 # define TRUE 1
