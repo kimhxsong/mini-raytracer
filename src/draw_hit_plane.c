@@ -6,7 +6,7 @@
 /*   By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 02:09:20 by yookim            #+#    #+#             */
-/*   Updated: 2022/02/02 19:58:11 by yookim           ###   ########.fr       */
+/*   Updated: 2022/02/02 21:38:48 by yookim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,14 @@ void	hit_plane_rec(double root, t_plane *pl, t_ray *ray, t_hit_record *rec)
 	set_face_normal(ray, rec);
 }
 
-int	hit_plane(t_plane *pl, t_ray *ray, t_hit_record *rec)
+int	hit_plane(t_obj *obj, t_ray *ray, t_hit_record *rec)
 {
 	t_vec	oc;
 	double	denominator;
 	double	root;
+	t_plane	*pl;
 
+	pl = (t_plane *)obj->info;
 	oc = vec_minus(pl->center, ray->orig);
 	denominator = vec_dot(ray->dir, pl->normal);
 	if (fabs(denominator) <= EPSILON)

@@ -6,7 +6,7 @@
 /*   By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 14:11:56 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/02/02 19:56:46 by yookim           ###   ########.fr       */
+/*   Updated: 2022/02/02 21:06:53 by yookim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	init_cam(t_cam *cam)
 	cam->up.i = 0.f;
 	cam->up.j = 1.f;
 	cam->up.k = 0.f;
-	if (cam->dir.j == 1 || cam->dir.j == -1)
+	if (cam->dir.j == 1.f || cam->dir.j == -1.f)
 	{
 		cam->up.i = 0.f;
 		cam->up.j = 0.f;

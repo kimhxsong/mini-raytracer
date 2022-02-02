@@ -6,7 +6,7 @@
 /*   By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 02:09:24 by yookim            #+#    #+#             */
-/*   Updated: 2022/02/02 16:32:29 by yookim           ###   ########.fr       */
+/*   Updated: 2022/02/02 21:39:02 by yookim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,13 @@ void	hit_sphere_rec(double root, t_sphere *sp, t_ray *ray, t_hit_record *rec)
 	set_face_normal(ray, rec);
 }
 
-int	hit_sphere(t_sphere *sp, t_ray *ray, t_hit_record *rec)
+int	hit_sphere(t_obj *obj, t_ray *ray, t_hit_record *rec)
 {
-	double	discriminant;
-	double	root;
+	double		discriminant;
+	double		root;
+	t_sphere	*sp;
 
+	sp = (t_sphere *)obj->info;
 	discriminant = hit_sphere_d(sp, ray, DISCRIMINANT);
 	if (discriminant < 0)
 		return (FALSE);

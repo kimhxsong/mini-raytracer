@@ -6,7 +6,7 @@
 /*   By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 02:09:16 by yookim            #+#    #+#             */
-/*   Updated: 2022/02/02 19:57:42 by yookim           ###   ########.fr       */
+/*   Updated: 2022/02/02 21:38:39 by yookim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,12 @@ int	hit_cylinder_root(t_cylinder *cy, t_ray *ray, t_hit_record *rec)
 	return (TRUE);
 }
 
-int	hit_cylinder(t_cylinder *cy, t_ray *ray, t_hit_record *rec)
+int	hit_cylinder(t_obj *obj, t_ray *ray, t_hit_record *rec)
 {
-	double	discriminant;
+	double		discriminant;
+	t_cylinder	*cy;
 
+	cy = (t_cylinder *)obj->info;
 	discriminant = hit_cylinder_d(cy, ray, DISCRIMINANT);
 	if (discriminant < 0)
 		return (FALSE);
