@@ -12,9 +12,14 @@
 
 #include "libftx.h"
 
+#define MARGIN_OF_ERROR 0.1f
+
 int	ft_isunitvec(t_vec vec)
 {
-	if ((vec.i * vec.i + vec.j * vec.j + vec.k * vec.k) != 1)
+	double	res;
+
+	res = vec.i * vec.i + vec.j * vec.j + vec.k * vec.k;
+	if (res < 1.f - MARGIN_OF_ERROR || res > 1.f + MARGIN_OF_ERROR)
 		return (0);
 	return (1);
 }
