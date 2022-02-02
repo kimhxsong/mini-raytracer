@@ -6,43 +6,24 @@
 /*   By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 14:11:56 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/02/02 19:21:22 by yookim           ###   ########.fr       */
+/*   Updated: 2022/02/02 19:56:46 by yookim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_vec	vec(double x, double y, double z)
-{
-	t_vec vec;
-
-	vec.i = x;
-	vec.j = y;
-	vec.k = z;
-	return (vec);
-}
-
 static void	init_cam(t_cam *cam)
 {
-	// double p;
-	// double t;
-
 	cam->focal_len = 1.f;
 	cam->up.i = 0.f;
 	cam->up.j = 1.f;
 	cam->up.k = 0.f;
-
-	// t = asin(cam->dir.k);
-	// if (cam->dir.k <= 1 + 1.0e-6 && cam->dir.k >= 1 - 1.0e-6)
-	// 	p = 0;
-	// else
-	// 	p = acos(cam->dir.j / cos(t));
-	// if (cam->dir.i > 0)
-	// 	p *= -1;
-
-	// cam->basis_i = vec_cal_unit(vec(cos(p), -1 * sin(p) * sin(t), -1 * sin(p) * cos(t)));
-	// cam->basis_j = vec_cal_unit(vec(sin(p), cos(p) * sin(t), cos(p) * cos(t)));
-	// cam->basis_k = vec_cal_unit(vec(0, -1 * cos(t),sin(t)));
+	if (cam->dir.j == 1 || cam->dir.j == -1)
+	{
+		cam->up.i = 0.f;
+		cam->up.j = 0.f;
+		cam->up.k = 1.f;
+	}
 	cam->basis_k = vec_cal_unit(vec_mult(cam->dir, -1));
 	cam->basis_i = vec_cal_unit(vec_cross(cam->up, cam->basis_k));
 	cam->basis_j = vec_cross(cam->basis_k, cam->basis_i);
