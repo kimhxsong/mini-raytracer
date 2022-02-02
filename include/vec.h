@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   vec.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 16:39:44 by yookim            #+#    #+#             */
-/*   Updated: 2022/01/19 02:09:05 by yookim           ###   ########.fr       */
+/*   Updated: 2022/02/02 13:10:10 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VEC_H
 # define VEC_H
 
-#include <math.h>
+# include <math.h>
 
-typedef struct s_vec t_vec;
-typedef struct s_vec t_point;
+typedef struct s_vec	t_vec;
+typedef struct s_vec	t_point;
 
 struct s_vec {
 	double	i;
