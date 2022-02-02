@@ -44,9 +44,9 @@ static void	init_img(t_data *data)
 void	init_data(char *argv[], t_data *data)
 {	
 	memset(data, 0, sizeof(t_data));
+	parse(open(argv[1], O_RDONLY), data);
 	init_mlx(data);
 	init_win(data);
 	init_img(data);
-	parse(open(argv[1], O_RDONLY), data);
 	init_scene(data);
 }
