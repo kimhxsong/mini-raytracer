@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_util.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 19:21:14 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/26 05:17:26 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/02/02 12:46:04 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,8 @@ int	ft_isvecform(char *str)
 
 int	ft_isfloatform(char *str)
 {
-	int	i;
-
 	str += ft_issign(*str);
-	while (isdigit(*str))
+	while (ft_isdigit(*str))
 		++str;
 	str += *str == '.';
 	while (ft_isdigit(*str))

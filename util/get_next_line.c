@@ -6,23 +6,32 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 17:36:06 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/26 15:43:56 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/02/02 13:00:28 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftx.h"
+#include <stdlib.h>
+#include <string.h>
 
-static char *ft_strdupnl(char *str)
+#ifndef BUFFER_SIZE
+# define BUFFER_SIZE 1024;
+#endif
+
+static char	*ft_strdupnl(char *str)
 {
 	char	*new;
 	size_t	len;
-	int		i;
+	size_t	i;
 
 	len = ft_strlen(str);
 	new = (char *)malloc((len + 2) * sizeof(char));
-	i = -1;
-	while (++i < len)
+	i = 0;
+	while (i < len)
+	{
 		new[i] = str[i];
+		++i;
+	}
 	new[i++] = '\n';
 	new[i] = '\0';
 	return (new);

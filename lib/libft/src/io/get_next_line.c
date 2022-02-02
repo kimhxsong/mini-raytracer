@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 20:19:50 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/25 01:23:37 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/02/02 13:18:25 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ static int	takeout_line(char **lineptr, char **save, char *newline)
 	return (0);
 }
 
-int	get_next_line(int fd, char **lineptr)
+int	get_next_lineptr(int fd, char **lineptr)
 {
 	static char		*save[OPEN_MAX];
 	char			buff[BUFFER_SIZE + 1];

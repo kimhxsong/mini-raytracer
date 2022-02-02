@@ -6,7 +6,7 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 18:27:41 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/26 15:46:59 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/02/02 12:55:22 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static void	parse_error(t_data *data, char *strv[])
 {
+	(void)data;
 	if (!strv || !*strv || **strv == '#')
 		return ;
 	ft_error("Invalid identifier");
@@ -52,12 +53,11 @@ void	parse(int fd, t_data *data)
 {
 	char	*line;
 	char	**strv;
-	void	(*fp[7])(t_data *, char *[]);
 
 	if (fd < 0)
 		ft_fatal("open");
 	line = get_next_line(fd);
-	if (!line)
+	if (!line || !*line)
 		ft_error("Empty file");
 	while (line)
 	{

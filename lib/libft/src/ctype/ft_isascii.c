@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/25 17:18:08 by SSONG             #+#    #+#             */
-/*   Updated: 2022/01/25 01:21:46 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/02/02 13:17:51 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 int	ft_isascii(int c)
 {
-	return ((unsigned char)c >= 0 && (unsigned char)c <= 127);
+	return ((unsigned char)c <= 127);
 }

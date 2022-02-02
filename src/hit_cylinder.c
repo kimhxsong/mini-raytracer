@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_cylinder.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 02:09:16 by yookim            #+#    #+#             */
-/*   Updated: 2022/01/26 06:55:21 by yookim           ###   ########.fr       */
+/*   Updated: 2022/02/02 12:33:00 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int	hit_cylinder_root(double d, t_cylinder *cy, t_ray *ray, t_hit_record *rec)
 {
 	double	root;
 
+	d = 0;
 	root = hit_cylinder_d(cy, ray, ROOT_SMALL);
 	if (root < rec->tmin || rec->tmax < root)
 	{

@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   io.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 21:00:58 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/26 04:05:10 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/02/02 13:18:46 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef  __FT_IO__H__
-# define __FT_IO__H__
+#ifndef  IO_H
+# define IO_H
 
-#include "libft.h"
+# include "libft.h"
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 4096
@@ -38,7 +38,6 @@ int	ft_dputs(int fd, const char *s);
 int	ft_dputendl(int fd, const char *s);
 int	ft_dputnbr(int fd, int n);
 
-// int get_next_line(int fd, char **lineptr);
-int ft_printf(const char *format, ...);
+int	get_next_lineptr(int fd, char **lineptr);
 
-#endif  //FT_IO_H
+#endif

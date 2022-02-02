@@ -6,15 +6,15 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 14:47:29 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/26 16:25:07 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/02/02 13:00:03 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftx.h"
 
-static	void	ft_atof_integer(double *integer, char **str)
+static void	ft_atof_integer(double *integer, char **str)
 {
-	double sign;
+	double	sign;
 
 	sign = 1;
 	*str += ft_strspn(*str, " \t");
@@ -30,7 +30,7 @@ static	void	ft_atof_integer(double *integer, char **str)
 	*integer = sign * *integer;
 }
 
-static	void	ft_atof_decimal(double *decimal, char *str)
+static void	ft_atof_decimal(double *decimal, char *str)
 {
 	while (*str && ft_isdigit(*str))
 		++str;

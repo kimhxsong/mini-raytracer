@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strvfree.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 09:51:06 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/18 11:30:20 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/02/02 13:02:02 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_strvfree(char *strv[])
 {
-	int i;
+	int	i;
 
 	if (!strv)
 		return ;

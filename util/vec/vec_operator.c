@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vec_operator.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 17:13:51 by yookim            #+#    #+#             */
-/*   Updated: 2022/01/06 23:02:12 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/02/02 13:02:40 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_vec	vec_mult(t_vec vec1, double t)
 
 double	vec_dot(t_vec vec1, t_vec vec2)
 {
-	return(vec1.i * vec2.i + vec1.j * vec2.j + vec1.k * vec2.k);
+	return (vec1.i * vec2.i + vec1.j * vec2.j + vec1.k * vec2.k);
 }
 
 t_vec	vec_cross(t_vec vec1, t_vec vec2)

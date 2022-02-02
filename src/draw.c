@@ -66,6 +66,3 @@ void	draw_scene(t_data *data)
 	}
 	mlx_put_image_to_window(data->mlx_ptr, data->win.ptr, data->img.ptr, 0, 0);
 }
-
-// t = (double) j / WIN_SIZE_Y; // 임시 배경
-// pixel_color = col_plus(col_mult(color(0, 1, 1, 1), t), col_mult(color(0, 0.5, 0.7, 1), 1 - t));
