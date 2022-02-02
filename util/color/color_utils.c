@@ -1,16 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color_operator.c                                   :+:      :+:    :+:   */
+/*   color_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 12:31:29 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/02/02 12:31:29 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/02/02 14:22:05 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "color.h"
+
+t_color	color(double t, double r, double g, double b)
+{
+	t_color	color;
+
+	color.t = t;
+	color.r = r;
+	color.g = g;
+	color.b = b;
+	return (color);
+}
 
 t_color	col_mult(t_color col1, double t)
 {

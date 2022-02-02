@@ -3,36 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 02:09:10 by yookim            #+#    #+#             */
-/*   Updated: 2022/01/26 04:47:35 by yookim           ###   ########.fr       */
+/*   Updated: 2022/02/02 14:36:43 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_ray	ray(t_point orig, t_vec dir)
-{
-	t_ray	ray;
-
-	ray.orig = orig;
-	ray.dir = vec_cal_unit(dir);
-	return (ray);
-}
-
-t_color	color(double t, double r, double g, double b)
-{
-	t_color	color;
-
-	color.t = t;
-	color.r = r;
-	color.g = g;
-	color.b = b;
-	return (color);
-}
-
-t_hit_record	record_init(void)
+static t_hit_record	record_init(void)
 {
 	t_hit_record	record;
 

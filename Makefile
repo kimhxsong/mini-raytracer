@@ -6,7 +6,7 @@
 #    By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/03 14:45:59 by hyeonsok          #+#    #+#              #
-#    Updated: 2022/02/02 12:35:36 by hyeonsok         ###   ########.fr        #
+#    Updated: 2022/02/02 14:41:14 by hyeonsok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,12 +54,13 @@ OBJS	= $(addprefix $(OBJDIR)/, \
 			vec_calculate.o \
 			vec_operator.o \
 			draw.o \
-			hit.o \
-			light.o \
-			hit_cylinder.o\
-			hit_plane.o \
-			hit_sphere.o \
-			color_operator.o)
+			draw_utils.o \
+			draw_hit.o \
+			draw_light.o \
+			draw_hit_cylinder.o\
+			draw_hit_plane.o \
+			draw_hit_sphere.o \
+			color_utils.o)
 
 NAME = miniRT
 
@@ -98,12 +99,13 @@ $(OBJDIR):
 
 .PHONY:		clean
 clean:
+			@make clean -C ./lib/libft
 			@$(RM) -r $(OBJDIR)
 
 .PHONY:		fclean
 fclean:		clean
 			@make clean -C ./lib/minilibx_opengl_20191021/
-			@make clean -C ./lib/libft
+			@make fclean -C ./lib/libft
 			@$(RM) -r $(NAME)
 
 .PHONY:		re

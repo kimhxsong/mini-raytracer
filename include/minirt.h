@@ -6,7 +6,7 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 14:38:12 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/02/02 13:07:49 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/02/02 14:46:02 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,8 @@
 # include <fcntl.h>
 # include <string.h>
 # include <stdlib.h>
-# include "libftx.h"
 # include "parse.h"
 # include "draw.h"
-# include "hit.h"
-# include "light.h"
-# include "color.h"
 
 # ifndef WIN_SIZE_X
 #  define WIN_SIZE_X 1920

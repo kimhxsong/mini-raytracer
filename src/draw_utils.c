@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   light.h                                            :+:      :+:    :+:   */
+/*   draw_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/19 02:08:55 by yookim            #+#    #+#             */
-/*   Updated: 2022/02/02 12:06:15 by hyeonsok         ###   ########.fr       */
+/*   Created: 2022/02/02 14:24:11 by hyeonsok          #+#    #+#             */
+/*   Updated: 2022/02/02 14:35:47 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIGHT_H
-# define LIGHT_H
+#include "draw.h"
 
-# include "color.h"
+t_ray	ray(t_point orig, t_vec dir)
+{
+	t_ray	ray;
 
-typedef struct s_data	t_data;
-
-t_color	lighting(t_data *data);
-
-#endif
+	ray.orig = orig;
+	ray.dir = vec_cal_unit(dir);
+	return (ray);
+}

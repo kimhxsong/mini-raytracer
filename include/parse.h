@@ -6,12 +6,14 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 18:44:44 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/02/02 13:09:56 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/02/02 14:47:01 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSE_H
 # define PARSE_H
+
+# include "libftx.h"
 
 # define FOCAL_LEN 1.0f
 
@@ -77,6 +79,12 @@ struct s_light
 	int		count;
 };
 
+struct s_ray
+{
+	t_point	orig;
+	t_vec	dir;
+};
+
 struct s_ambient
 {
 	double	ratio;
@@ -114,12 +122,6 @@ struct s_scene {
 	int		count;
 };
 
-struct s_ray
-{
-	t_point	orig;
-	t_vec	dir;
-};
-
 struct	s_hit_record
 {
 	t_point		p;
@@ -142,6 +144,11 @@ struct s_data {
 	t_ray			ray;
 	t_hit_record	rec;
 };
+
+int		ft_isfloatform(char *str);
+int		ft_isvecform(char *str);
+int		ft_iscolorform(char *str);
+int		ft_isintform(char *str);
 
 void	parse(int fd, struct s_data *data);
 void	parse_ambient(struct s_data *data, char *strv[]);
