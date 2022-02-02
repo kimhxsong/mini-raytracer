@@ -14,7 +14,7 @@
 
 int	ft_isunitvec(t_vec vec)
 {
-	if ((pow(vec.i, 2) + pow(vec.j, 2) + pow(vec.k, 2)) != 1)
+	if ((vec.i * vec.i + vec.j * vec.j + vec.k * vec.k) != 1)
 		return (0);
 	return (1);
 }
