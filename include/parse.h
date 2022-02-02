@@ -13,9 +13,15 @@
 #ifndef PARSE_H
 # define PARSE_H
 
+typedef struct s_parser {
+	void	(*fn)(t_data *, char*[]);
+}	t_parser;
+
 #include "minirt.h"
 
 # define FOCAL_LEN 1.0f
+
+
 
 void	parse_ambient(t_data *data, char *strv[]);
 void	parse_light(t_data *data, char *strv[]);

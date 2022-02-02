@@ -38,14 +38,14 @@ static int	get_id(char *id)
 	return (SPEC_NO);
 }
 
-static void (*g_parser[7])(t_data *, char *[]) = { \
-	parse_ambient,
-	parse_camera,
-	parse_light,
-	parse_plane,
-	parse_sphere,
-	parse_cylinder,
-	parse_error
+static const t_parser	g_parser[] = {
+	{parse_ambient},
+	{parse_camera},
+	{parse_light},
+	{parse_plane},
+	{parse_sphere},
+	{parse_cylinder},
+	{parse_error}
 };
 
 void	parse(int fd, t_data *data)
@@ -63,7 +63,7 @@ void	parse(int fd, t_data *data)
 	{
 		strv = ft_split(line, " \t\n");
 		free(line);
-		g_parser[get_id(strv[0])](data, strv);
+		g_parser[get_id(strv[0])].fn(data, strv);
 		ft_strvfree(strv);
 		line = get_next_line(fd);
 	}
