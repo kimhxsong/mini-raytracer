@@ -57,7 +57,7 @@ void	parse(int fd, t_data *data)
 	if (fd < 0)
 		ft_fatal("open");
 	line = get_next_line(fd);
-	if (!line || !*line)
+	if (!line)
 		ft_error("Empty file");
 	while (line)
 	{
