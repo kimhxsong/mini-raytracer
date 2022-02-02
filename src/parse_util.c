@@ -36,6 +36,8 @@ int	ft_isvecform(char *str)
 
 int	ft_isfloatform(char *str)
 {
+	if (ft_strlen(str) > 15)
+		return (0);
 	str += ft_issign(*str);
 	while (ft_isdigit(*str))
 		++str;
