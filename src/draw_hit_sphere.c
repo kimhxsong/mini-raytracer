@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hit_sphere.c                                       :+:      :+:    :+:   */
+/*   draw_hit_sphere.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 02:09:24 by yookim            #+#    #+#             */
-/*   Updated: 2022/01/19 02:09:25 by yookim           ###   ########.fr       */
+/*   Updated: 2022/02/02 16:32:29 by yookim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ double	hit_sphere_d(t_sphere *sp, t_ray *ray, t_root type)
 	discriminant = half_b * half_b - a * c;
 	if (type == ROOT_SMALL)
 		return ((-half_b - sqrt(discriminant)) / a);
-	if (type == ROOT_LARGE)
+	if (type == ROOT_BIG)
 		return ((-half_b + sqrt(discriminant)) / a);
 	return (discriminant);
 }
@@ -51,7 +51,7 @@ int	hit_sphere(t_sphere *sp, t_ray *ray, t_hit_record *rec)
 	root = hit_sphere_d(sp, ray, ROOT_SMALL);
 	if (root < rec->tmin || rec->tmax < root)
 	{
-		root = hit_sphere_d(sp, ray, ROOT_LARGE);
+		root = hit_sphere_d(sp, ray, ROOT_BIG);
 		if (root < rec->tmin || rec->tmax < root)
 			return (FALSE);
 	}

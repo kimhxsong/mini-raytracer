@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hit_cylinder.c                                     :+:      :+:    :+:   */
+/*   draw_hit_cylinder.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 02:09:16 by yookim            #+#    #+#             */
-/*   Updated: 2022/02/02 12:33:00 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/02/02 16:32:16 by yookim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ double	hit_cylinder_d(t_cylinder *cy, t_ray *ray, t_root type)
 	discriminant = half_b * half_b - a * c;
 	if (type == ROOT_SMALL)
 		return ((-half_b - sqrt(discriminant)) / a);
-	if (type == ROOT_LARGE)
+	if (type == ROOT_BIG)
 		return ((-half_b + sqrt(discriminant)) / a);
 	return (discriminant);
 }
@@ -51,30 +51,29 @@ int	hit_cylinder_h(double root, t_cylinder *cy, t_ray *ray, t_hit_record *rec)
 	return (TRUE);
 }
 
-int	hit_cylinder_root(double d, t_cylinder *cy, t_ray *ray, t_hit_record *rec)
+int hit_cylinder_rootb(t_cylinder *cy, t_ray *ray, t_hit_record *rec)
+{
+	double root;
+
+	root = hit_cylinder_d(cy, ray, ROOT_BIG);
+	if (root < rec->tmin || rec->tmax < root)
+		return (FALSE);
+	if (!hit_cylinder_h(root, cy, ray, rec))
+		return (FALSE);
+	return (TRUE);
+}
+
+int	hit_cylinder_root(t_cylinder *cy, t_ray *ray, t_hit_record *rec)
 {
 	double	root;
 
-	d = 0;
 	root = hit_cylinder_d(cy, ray, ROOT_SMALL);
 	if (root < rec->tmin || rec->tmax < root)
-	{
-		root = hit_cylinder_d(cy, ray, ROOT_LARGE);
-		if (root < rec->tmin || rec->tmax < root)
-			return (FALSE);
-		if (!hit_cylinder_h(root, cy, ray, rec))
-			return (FALSE);
-	}
+		return (hit_cylinder_rootb(cy, ray, rec));
 	else
 	{
 		if (!hit_cylinder_h(root, cy, ray, rec))
-		{
-			root = hit_cylinder_d(cy, ray, ROOT_LARGE);
-			if (root < rec->tmin || rec->tmax < root)
-				return (FALSE);
-			if (!hit_cylinder_h(root, cy, ray, rec))
-				return (FALSE);
-		}
+			return (hit_cylinder_rootb(cy, ray, rec));
 	}
 	return (TRUE);
 }
@@ -86,7 +85,7 @@ int	hit_cylinder(t_cylinder *cy, t_ray *ray, t_hit_record *rec)
 	discriminant = hit_cylinder_d(cy, ray, DISCRIMINANT);
 	if (discriminant < 0)
 		return (FALSE);
-	if (!hit_cylinder_root(discriminant, cy, ray, rec))
+	if (!hit_cylinder_root(cy, ray, rec))
 		return (FALSE);
 	return (TRUE);
 }

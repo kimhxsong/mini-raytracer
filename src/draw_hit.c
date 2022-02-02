@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   darw_hit.c                                         :+:      :+:    :+:   */
+/*   draw_hit.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 02:09:27 by yookim            #+#    #+#             */
-/*   Updated: 2022/02/02 14:47:45 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/02/02 15:42:43 by yookim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,31 +33,31 @@ int	hit_obj(t_obj *obj, t_ray *ray, t_hit_record *rec)
 
 	hit_result = FALSE;
 	if (obj->type == TYPE_SP)
-		hit_result = hit_sphere((t_sphere *)obj->info, ray, rec);
+		hit_result = hit_sphere(obj->info, ray, rec);
 	else if (obj->type == TYPE_PL)
-		hit_result = hit_plane((t_plane *)obj->info, ray, rec);
+		hit_result = hit_plane(obj->info, ray, rec);
 	else if (obj->type == TYPE_CY)
-		hit_result = hit_cylinder((t_cylinder *)obj->info, ray, rec);
+		hit_result = hit_cylinder(obj->info, ray, rec);
 	return (hit_result);
 }
 
 int	hit(t_obj *obj, t_ray *ray, t_hit_record *rec)
 {
-	int				hit_anything;
+	int				hit_result;
 	t_hit_record	temp_rec;
 
 	temp_rec = *rec;
-	hit_anything = FALSE;
+	hit_result = FALSE;
 	while (obj)
 	{
 		if (hit_obj(obj, ray, &temp_rec))
 		{
-			hit_anything = TRUE;
+			hit_result = TRUE;
 			temp_rec.color = obj->color;
 			temp_rec.tmax = temp_rec.t;
 			*rec = temp_rec;
 		}
 		obj = obj->next;
 	}
-	return (hit_anything);
+	return (hit_result);
 }

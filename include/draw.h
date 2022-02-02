@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 02:08:46 by yookim            #+#    #+#             */
-/*   Updated: 2022/02/02 14:46:10 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/02/02 16:31:58 by yookim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 typedef enum e_root {
 	DISCRIMINANT,
 	ROOT_SMALL,
-	ROOT_LARGE
+	ROOT_BIG
 }	t_root;
 
 /**
