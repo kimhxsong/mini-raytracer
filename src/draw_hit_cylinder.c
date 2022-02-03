@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_hit_cylinder.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 02:09:16 by yookim            #+#    #+#             */
-/*   Updated: 2022/02/02 21:38:39 by yookim           ###   ########.fr       */
+/*   Updated: 2022/02/03 18:07:09 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 double	hit_cylinder_d(t_cylinder *cy, t_ray *ray, t_root type)
 {
 	double	discriminant;
-	t_vec	co;
+	t_vec	ce;
 	double	a;
 	double	half_b;
 	double	c;
 
-	co = vec_minus(ray->orig, cy->center);
+	ce = vec_minus(ray->orig, cy->center);
 	a = vec_dot(ray->dir, ray->dir) - pow(vec_dot(ray->dir, cy->normal), 2);
-	half_b = vec_dot(ray->dir, co)
-		- (vec_dot(ray->dir, cy->normal) * vec_dot(co, cy->normal));
-	c = vec_dot(co, co) - pow(vec_dot(co, cy->normal), 2)
+	half_b = vec_dot(ray->dir, ce)
+		- (vec_dot(ray->dir, cy->normal) * vec_dot(ce, cy->normal));
+	c = vec_dot(ce, ce) - pow(vec_dot(ce, cy->normal), 2)
 		- (cy->radius * cy->radius);
 	discriminant = half_b * half_b - a * c;
 	if (type == ROOT_SMALL)

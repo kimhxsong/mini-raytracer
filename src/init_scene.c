@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_scene.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 14:11:56 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/02/02 21:06:53 by yookim           ###   ########.fr       */
+/*   Updated: 2022/02/03 17:52:39 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,10 @@
 
 static void	init_cam(t_cam *cam)
 {
-	cam->focal_len = 1.f;
-	cam->up.i = 0.f;
-	cam->up.j = 1.f;
-	cam->up.k = 0.f;
+	cam->up.j = 1.0f;
+	cam->focal_len = FOCAL_LEN;
 	if (cam->dir.j == 1.f || cam->dir.j == -1.f)
 	{
-		cam->up.i = 0.f;
 		cam->up.j = 0.f;
 		cam->up.k = 1.f;
 	}

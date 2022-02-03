@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   draw_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 14:24:11 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/02/02 20:51:59 by yookim           ###   ########.fr       */
+/*   Updated: 2022/02/03 17:59:27 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "draw.h"
+#include "minirt.h"
 
 t_ray	ray(t_point orig, t_vec dir)
 {

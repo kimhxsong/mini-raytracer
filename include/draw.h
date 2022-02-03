@@ -3,17 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   draw.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 02:08:46 by yookim            #+#    #+#             */
-/*   Updated: 2022/02/02 21:38:01 by yookim           ###   ########.fr       */
+/*   Updated: 2022/02/03 18:53:06 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DRAW_H
 # define DRAW_H
-
-# include "parse.h"
 
 typedef enum e_root {
 	DISCRIMINANT,
@@ -22,8 +20,8 @@ typedef enum e_root {
 }	t_root;
 
 typedef struct s_hit {
-	int (*fn)(t_obj *, t_ray *, t_hit_record *);
-} t_hit;
+	int	(*fn)(t_obj *, t_ray *, t_hit_record *);
+}	t_hit;
 
 /**
  * light.c
