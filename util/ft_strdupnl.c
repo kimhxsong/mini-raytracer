@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdupnl.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 16:54:23 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/02/03 16:55:18 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/02/04 05:44:37 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ char	*ft_strdupnl(char *str)
 
 	len = ft_strlen(str);
 	new = (char *)malloc((len + 2) * sizeof(char));
+	if (!new)
+		return (NULL);
 	i = 0;
 	while (i < len)
 	{
