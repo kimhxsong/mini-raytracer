@@ -54,7 +54,4 @@ t_vec	ft_strtovec(char *str);
 int		ft_isunitvec(t_vec vec);
 int		ft_iscolor(t_color color);
 
-/** libft - latest get_next_line */
-char	*get_next_line(int fd);
-
 #endif

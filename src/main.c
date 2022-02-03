@@ -19,7 +19,7 @@ static void	validate_args(int argc, char *argv[])
 	if (argc != 2)
 		ft_error("Invalid argument");
 	ext = ft_strrchr(argv[1], '.');
-	if (!ext || strcmp(ext, ".rt"))
+	if (!ext || ft_memcmp(ext, ".rt", 4 * sizeof(unsigned char)))
 		ft_error("Invalid file");
 }
 
