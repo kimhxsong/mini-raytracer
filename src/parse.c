@@ -51,21 +51,23 @@ static const t_parser	g_parser[] = {
 
 void	parse(int fd, t_data *data)
 {
-	char	*line;
+	char	*lineptr;
 	char	**strv;
 
 	if (fd < 0)
 		ft_fatal("open");
-	line = get_next_line(fd);
-	if (!line)
+	if (get_next_line(fd, &lineptr) == -1)
+		ft_fatal("read");
+	if (!lineptr)
 		ft_error("Empty file");
-	while (line)
+	while (lineptr)
 	{
-		strv = ft_split(line, " \t\n");
-		free(line);
+		strv = ft_split(lineptr, " \t\n");
+		free(lineptr);
 		g_parser[get_id(strv[0])].fn(data, strv);
 		ft_strvfree(strv);
-		line = get_next_line(fd);
+		if (get_next_line(fd, &lineptr) == -1)
+			ft_fatal("read");
 	}
 	if (!data->scene.count || !data->ambient.count || !data->light.count)
 		ft_error("One or more identifiers are not declared.");
