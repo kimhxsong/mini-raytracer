@@ -6,7 +6,7 @@
 #    By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/04 01:40:54 by hyeonsok          #+#    #+#              #
-#    Updated: 2022/02/04 03:11:16 by hyeonsok         ###   ########.fr        #
+#    Updated: 2022/02/04 05:31:18 by hyeonsok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,9 +41,9 @@ do
 done
 
 ## Find relative postion
-x=$(echo "${lookfrom[0]} - ${lookat[0]}" | bc -l)
-y=$(echo "${lookfrom[1]} - ${lookat[1]}" | bc -l)
-z=$(echo "${lookfrom[2]} - ${lookat[2]}" | bc -l)
+x=$(echo "${lookat[0]} - ${lookfrom[0]}" | bc -l)
+y=$(echo "${lookat[1]} - ${lookfrom[1]}" | bc -l)
+z=$(echo "${lookat[2]} - ${lookfrom[2]}" | bc -l)
 
 ## Square calculation
 xx=$(echo $x \* $x | bc -l)

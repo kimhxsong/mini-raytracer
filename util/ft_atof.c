@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atof.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 14:47:29 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/02/03 21:27:01 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/02/04 03:34:00 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ double	ft_atof(char *str)
 	ft_atof_integer(&integer, &str);
 	str += (*str == '.');
 	if (!*str)
-		return (integer);
+		return (integer * sign);
 	ft_atof_decimal(&decimal, str);
 	ret = (integer + decimal) * sign;
 	return ((integer + decimal) * sign);
