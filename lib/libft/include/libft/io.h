@@ -13,7 +13,9 @@
 #ifndef  IO_H
 # define IO_H
 
-# include "libft.h"
+# include <stdlib.h>
+# include <unistd.h>
+# include <fcntl.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 4096

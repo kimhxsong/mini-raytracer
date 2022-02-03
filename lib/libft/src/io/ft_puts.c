@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft/io.h"
+#include "libft/string.h"
 
 int	ft_puts(const char *s)
 {
