@@ -6,7 +6,7 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 13:37:02 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/19 15:50:58 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/02/03 21:40:34 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ static void	init_obj_sphere(t_data *data, char *strv[])
 		ft_fatal("malloc");
 	sp->center = ft_strtovec(strv[1]);
 	sp->diameter = ft_atof(strv[2]);
+	if (sp->diameter < 0)
+		ft_error("Invalid 'sphere' diameter");
 	obj->color = ft_strtocolor(strv[3]);
 	if (!ft_iscolor(obj->color))
 		ft_error("Invalid 'sphere' RGB");

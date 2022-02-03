@@ -6,7 +6,7 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 13:37:09 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/19 15:49:27 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/02/03 21:41:15 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,10 @@ static void	init_obj_cylinder(t_data *data, char *strv[])
 		ft_error("Invalid 'cylinder'  3d normalized orientation vector");
 	cy->diameter = ft_atof(strv[3]);
 	cy->height = ft_atof(strv[4]);
+	if (cy->diameter < 0)
+		ft_error("Invalid 'cylinder' diameter");
+	if (cy->height < 0)
+		ft_error("Invalid 'cylinder' height");
 	obj->color = ft_strtocolor(strv[5]);
 	if (!ft_iscolor(obj->color))
 		ft_error("Invalid 'cylinder' RGB");
