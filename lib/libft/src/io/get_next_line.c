@@ -83,7 +83,7 @@ static int	takeout_line(char **lineptr, char **save, char *newline)
 	return (0);
 }
 
-int	get_next_line(int fd, char **lineptr)
+int	get_next_lineptr(int fd, char **lineptr)
 {
 	static char		*save[OPEN_MAX];
 	char			buff[BUFFER_SIZE + 1];

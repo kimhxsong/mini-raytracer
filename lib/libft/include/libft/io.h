@@ -38,6 +38,6 @@ int	ft_dputs(int fd, const char *s);
 int	ft_dputendl(int fd, const char *s);
 int	ft_dputnbr(int fd, int n);
 
-int	get_next_line(int fd, char **lineptr);
+int	get_next_lineptr(int fd, char **lineptr);
 
 #endif
