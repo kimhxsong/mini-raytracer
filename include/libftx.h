@@ -6,7 +6,7 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 14:42:29 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/02/02 14:46:07 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/02/03 16:59:45 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ t_vec	ft_strtovec(char *str);
 int		ft_isunitvec(t_vec vec);
 int		ft_iscolor(t_color color);
 
+char	*ft_strjoinnl(char *str1, char *str2);
+char	*ft_strdupnl(char *str);
 char	*get_next_line(int fd);
 
 #endif
