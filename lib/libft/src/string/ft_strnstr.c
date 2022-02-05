@@ -6,11 +6,11 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/25 14:51:45 by SSONG             #+#    #+#             */
-/*   Updated: 2022/02/02 13:13:43 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/02/05 19:09:03 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/string.h"
+#include "libft.h"
 
 char	*ft_strnstr(const char *str, const char *substr, size_t len)
 {

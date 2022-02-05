@@ -6,12 +6,11 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 20:28:18 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/02/02 13:14:09 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/02/05 19:26:02 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <string.h>
 
 static int	get_count(const char *input, const char *sep)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_dputendl.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 21:37:15 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/25 23:43:43 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/02/05 19:08:41 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/io.h"
+#include "libft.h"
 
 int	ft_dputendl(int fd, const char *s)
 {

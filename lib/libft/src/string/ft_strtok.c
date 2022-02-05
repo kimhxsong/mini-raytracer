@@ -6,11 +6,11 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:36:04 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/02/02 13:13:07 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/02/05 19:09:03 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/string.h"
+#include "libft.h"
 
 size_t	ft_strspn(const char *s, const char *charset)
 {

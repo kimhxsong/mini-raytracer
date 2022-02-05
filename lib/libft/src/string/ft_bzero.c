@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 10:18:35 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/25 13:50:33 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/02/05 19:09:03 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/string.h"
+#include "libft.h"
 
 void	ft_bzero(void *s, size_t n)
 {

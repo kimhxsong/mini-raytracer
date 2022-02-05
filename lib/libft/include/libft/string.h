@@ -6,15 +6,12 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 21:18:39 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/02/02 13:15:45 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/02/05 19:25:08 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRING_H
 # define STRING_H
-
-# include <stddef.h>
-# include <stdlib.h>
 
 void			*ft_memset(void *b, int c, size_t len);
 void			ft_bzero(void *s, size_t n);

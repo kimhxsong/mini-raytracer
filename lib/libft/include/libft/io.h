@@ -6,16 +6,12 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 21:00:58 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/02/02 13:18:46 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/02/05 19:25:00 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef  IO_H
 # define IO_H
-
-# include <stdlib.h>
-# include <unistd.h>
-# include <fcntl.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 4096

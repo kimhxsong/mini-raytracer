@@ -6,17 +6,17 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/22 20:51:02 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/02/02 13:11:31 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/02/05 19:25:56 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <stdlib.h>
 # include <unistd.h>
+# include <stdlib.h>
 # include <fcntl.h>
-
+# include <stddef.h>
 # include "libft/ctype.h"
 # include "libft/string.h"
 # include "libft/io.h"
