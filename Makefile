@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+         #
+#    By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/03 14:45:59 by hyeonsok          #+#    #+#              #
-#    Updated: 2022/02/05 17:34:48 by hyeonsok         ###   ########.fr        #
+#    Updated: 2022/02/05 17:54:20 by yookim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,9 +23,9 @@ LIBMLX = lib/minilibx_opengl_20191021/libmlx.a
 
 SRCDIR := ./src
 UTILDIR := ./util
-UTIL_MLX_DIR := ./util/mlx
-UTIL_VEC_DIR := ./util/vec
-UTIL_COL_DIR := ./util/color
+UTILDIR_MLX := ./util/mlx
+UTILDIR_VEC := ./util/vec
+UTILDIR_COLOR := ./util/color
 
 OBJDIR := ./obj
 OBJS	= $(addprefix $(OBJDIR)/, \
@@ -75,14 +75,15 @@ $(OBJDIR)/%.o : $(SRCDIR)/%.c
 $(OBJDIR)/%.o : $(UTILDIR)/%.c
 			$(CC) $(INCLUDES) $(CFLAGS) -c $< -o $@
 
-$(OBJDIR)/%.o : $(UTIL_MLX_DIR)/%.c
+$(OBJDIR)/%.o : $(UTILDIR_MLX)/%.c
 			$(CC) $(INCLUDES) $(CFLAGS) -c $< -o $@
 
-$(OBJDIR)/%.o : $(UTIL_VEC_DIR)/%.c
+$(OBJDIR)/%.o : $(UTILDIR_VEC)/%.c
 			$(CC) $(INCLUDES) $(CFLAGS) -c $< -o $@
 
-$(OBJDIR)/%.o : $(UTIL_COL_DIR)/%.c
+$(OBJDIR)/%.o : $(UTILDIR_COLOR)/%.c
 			$(CC) $(INCLUDES) $(CFLAGS) -c $< -o $@
+
 
 .PHONY:		all
 all:		libft mlx $(NAME)
