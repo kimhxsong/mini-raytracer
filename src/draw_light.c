@@ -6,13 +6,13 @@
 /*   By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 02:09:34 by yookim            #+#    #+#             */
-/*   Updated: 2022/02/02 18:37:16 by yookim           ###   ########.fr       */
+/*   Updated: 2022/02/05 18:40:34 by yookim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	in_shadow(t_data *data)
+static int	in_shadow(t_data *data)
 {
 	t_vec			light_dir;
 	t_ray			light_ray;
@@ -21,14 +21,14 @@ int	in_shadow(t_data *data)
 	light_dir = vec_minus(data->light.spot, data->rec.p);
 	light_ray = ray(vec_plus(data->rec.p, \
 		vec_mult(data->rec.normal, EPSILON)), light_dir);
-	rec.tmin = EPSILON;
+	rec.tmin = 0;
 	rec.tmax = vec_cal_len(light_dir);
 	if (hit(data->first_obj, &light_ray, &rec))
 		return (TRUE);
 	return (FALSE);
 }
 
-t_color	lighting_diffuse(t_data *data)
+static t_color	lighting_diffuse(t_data *data)
 {
 	t_vec	light_dir;
 	double	kd;

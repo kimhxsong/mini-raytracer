@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   draw_hit_cylinder.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 02:09:16 by yookim            #+#    #+#             */
-/*   Updated: 2022/02/03 18:07:09 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/02/05 18:30:48 by yookim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-double	hit_cylinder_d(t_cylinder *cy, t_ray *ray, t_root type)
+/* a = vec_dot(ray->dir, ray->dir) - pow(vec_dot(ray->dir, cy->normal), 2); */
+static double	hit_cylinder_d(t_cylinder *cy, t_ray *ray, t_root type)
 {
 	double	discriminant;
 	t_vec	ce;
@@ -21,10 +22,10 @@ double	hit_cylinder_d(t_cylinder *cy, t_ray *ray, t_root type)
 	double	c;
 
 	ce = vec_minus(ray->orig, cy->center);
-	a = vec_dot(ray->dir, ray->dir) - pow(vec_dot(ray->dir, cy->normal), 2);
-	half_b = vec_dot(ray->dir, ce)
+	a = 1 - pow(vec_dot(ray->dir, cy->normal), 2);
+	half_b = vec_dot(ray->dir, ce) \
 		- (vec_dot(ray->dir, cy->normal) * vec_dot(ce, cy->normal));
-	c = vec_dot(ce, ce) - pow(vec_dot(ce, cy->normal), 2)
+	c = vec_dot(ce, ce) - pow(vec_dot(ce, cy->normal), 2) \
 		- (cy->radius * cy->radius);
 	discriminant = half_b * half_b - a * c;
 	if (type == ROOT_SMALL)
@@ -34,7 +35,8 @@ double	hit_cylinder_d(t_cylinder *cy, t_ray *ray, t_root type)
 	return (discriminant);
 }
 
-int	hit_cylinder_h(double root, t_cylinder *cy, t_ray *ray, t_hit_record *rec)
+static int	hit_cylinder_h(double root, t_cylinder *cy, t_ray *ray, \
+	t_hit_record *rec)
 {
 	t_point	p;
 	double	h_range;
@@ -51,7 +53,7 @@ int	hit_cylinder_h(double root, t_cylinder *cy, t_ray *ray, t_hit_record *rec)
 	return (TRUE);
 }
 
-int	hit_cylinder_rootb(t_cylinder *cy, t_ray *ray, t_hit_record *rec)
+static int	hit_cylinder_rootb(t_cylinder *cy, t_ray *ray, t_hit_record *rec)
 {
 	double	root;
 
@@ -63,18 +65,15 @@ int	hit_cylinder_rootb(t_cylinder *cy, t_ray *ray, t_hit_record *rec)
 	return (TRUE);
 }
 
-int	hit_cylinder_root(t_cylinder *cy, t_ray *ray, t_hit_record *rec)
+static int	hit_cylinder_root(t_cylinder *cy, t_ray *ray, t_hit_record *rec)
 {
 	double	root;
 
 	root = hit_cylinder_d(cy, ray, ROOT_SMALL);
 	if (root < rec->tmin || rec->tmax < root)
 		return (hit_cylinder_rootb(cy, ray, rec));
-	else
-	{
-		if (!hit_cylinder_h(root, cy, ray, rec))
-			return (hit_cylinder_rootb(cy, ray, rec));
-	}
+	else if (!hit_cylinder_h(root, cy, ray, rec))
+		return (hit_cylinder_rootb(cy, ray, rec));
 	return (TRUE);
 }
 

@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   draw_hit_plane.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 02:09:20 by yookim            #+#    #+#             */
-/*   Updated: 2022/02/03 18:06:45 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/02/05 18:27:45 by yookim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	hit_plane_rec(double root, t_plane *pl, t_ray *ray, t_hit_record *rec)
+static void	hit_plane_rec(double root, t_plane *pl, t_ray *ray, \
+	t_hit_record *rec)
 {
 	rec->t = root;
 	rec->p = ray_to(ray, root);

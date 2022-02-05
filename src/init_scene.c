@@ -6,7 +6,7 @@
 /*   By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 14:11:56 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/02/05 17:36:52 by yookim           ###   ########.fr       */
+/*   Updated: 2022/02/05 18:03:33 by yookim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	alloc_view(t_data *data)
 	data->scene.view.matrix = (t_vec **)malloc(data->win.height \
 		* sizeof(t_vec));
 	if (!data->scene.view.matrix)
-		return (0);
+		ft_fatal("malloc");
 	memset(data->scene.view.matrix, 0, data->win.height * sizeof(t_vec));
 	i = -1;
 	while (++i < data->win.height)
@@ -41,7 +41,7 @@ static int	alloc_view(t_data *data)
 		data->scene.view.matrix[i] = (t_vec *)malloc(data->win.width \
 			* sizeof(t_vec));
 		if (!data->scene.view.matrix[i])
-			return (0);
+			ft_fatal("malloc");
 	}
 	return (1);
 }

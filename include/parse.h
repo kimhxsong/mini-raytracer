@@ -3,19 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 18:44:44 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/02/03 18:24:50 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/02/05 18:50:27 by yookim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSE_H
 # define PARSE_H
-
-# include "libftx.h"
-
-# define FOCAL_LEN 1.0f
 
 typedef struct s_sphere		t_sphere;
 typedef struct s_plane		t_plane;

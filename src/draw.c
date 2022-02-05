@@ -6,7 +6,7 @@
 /*   By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 02:09:10 by yookim            #+#    #+#             */
-/*   Updated: 2022/02/02 20:23:59 by yookim           ###   ########.fr       */
+/*   Updated: 2022/02/05 18:12:41 by yookim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ static t_hit_record	record_init(void)
 
 void	draw_scene(t_data *data)
 {
+	t_color	pixel_color;
 	t_scene	scene;
 	int		i;
 	int		j;
-	t_color	pixel_color;
 
 	scene = data->scene;
 	j = -1;

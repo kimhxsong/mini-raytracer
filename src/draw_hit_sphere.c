@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   draw_hit_sphere.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 02:09:24 by yookim            #+#    #+#             */
-/*   Updated: 2022/02/03 18:06:28 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/02/05 18:28:02 by yookim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-double	hit_sphere_d(t_sphere *sp, t_ray *ray, t_root type)
+/* a = vec_dot(ray->dir, ray->dir) */
+static double	hit_sphere_d(t_sphere *sp, t_ray *ray, t_root type)
 {
 	double	discriminant;
 	t_vec	ce;
@@ -21,18 +22,17 @@ double	hit_sphere_d(t_sphere *sp, t_ray *ray, t_root type)
 	double	c;
 
 	ce = vec_minus(ray->orig, sp->center);
-	a = vec_dot(ray->dir, ray->dir);
+	a = 1;
 	half_b = vec_dot(ce, ray->dir);
 	c = vec_dot(ce, ce) - (sp->radius * sp->radius);
 	discriminant = half_b * half_b - a * c;
 	if (type == ROOT_SMALL)
 		return ((-half_b - sqrt(discriminant)) / a);
-	if (type == ROOT_BIG)
-		return ((-half_b + sqrt(discriminant)) / a);
 	return (discriminant);
 }
 
-void	hit_sphere_rec(double root, t_sphere *sp, t_ray *ray, t_hit_record *rec)
+static void	hit_sphere_rec(double root, t_sphere *sp, t_ray *ray, \
+	t_hit_record *rec)
 {
 	rec->t = root;
 	rec->p = ray_to(ray, root);
@@ -52,11 +52,7 @@ int	hit_sphere(t_obj *obj, t_ray *ray, t_hit_record *rec)
 		return (FALSE);
 	root = hit_sphere_d(sp, ray, ROOT_SMALL);
 	if (root < rec->tmin || rec->tmax < root)
-	{
-		root = hit_sphere_d(sp, ray, ROOT_BIG);
-		if (root < rec->tmin || rec->tmax < root)
-			return (FALSE);
-	}
+		return (FALSE);
 	hit_sphere_rec(root, sp, ray, rec);
 	return (TRUE);
 }
