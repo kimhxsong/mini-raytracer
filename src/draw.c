@@ -6,33 +6,13 @@
 /*   By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 02:09:10 by yookim            #+#    #+#             */
-/*   Updated: 2022/01/26 04:47:35 by yookim           ###   ########.fr       */
+/*   Updated: 2022/02/02 20:23:59 by yookim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_ray	ray(t_point orig, t_vec dir)
-{
-	t_ray	ray;
-
-	ray.orig = orig;
-	ray.dir = vec_cal_unit(dir);
-	return (ray);
-}
-
-t_color	color(double t, double r, double g, double b)
-{
-	t_color	color;
-
-	color.t = t;
-	color.r = r;
-	color.g = g;
-	color.b = b;
-	return (color);
-}
-
-t_hit_record	record_init(void)
+static t_hit_record	record_init(void)
 {
 	t_hit_record	record;
 
@@ -50,10 +30,10 @@ void	draw_scene(t_data *data)
 
 	scene = data->scene;
 	j = -1;
-	while (++j < WIN_SIZE_Y)
+	while (++j < data->win.height)
 	{
 		i = -1;
-		while (++i < WIN_SIZE_X)
+		while (++i < data->win.width)
 		{
 			data->ray = ray(scene.cam.origin, scene.view.matrix[j][i]);
 			data->rec = record_init();

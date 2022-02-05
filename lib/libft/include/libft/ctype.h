@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ctype.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 20:56:05 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/25 01:31:48 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/02/02 13:11:24 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_CTYPE_H
-# define LIBFT_CTYPE_H
+#ifndef CTYPE_H
+# define CTYPE_H
 
 int	ft_isalnum(int c);
 int	ft_isalpha(int c);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_sphere.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 13:37:02 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/19 15:50:58 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/02/04 06:01:00 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ static void	validate_sphere(char *strv[])
 	int		isform;
 
 	if (ft_strvlen(strv) != 4)
-		ft_error("Invalid 'sphere' description");
+		ft_error("validate_sphere: sphere: Invalid description");
 	isform = ft_isvecform(strv[1]) && ft_isfloatform(strv[2]) \
 		&& ft_iscolorform(strv[3]);
 	if (!isform)
-		ft_error("Invalid 'sphere' description");
+		ft_error("validate_sphere: sphere description");
 }
 
 static void	init_obj_sphere(t_data *data, char *strv[])
@@ -35,9 +35,11 @@ static void	init_obj_sphere(t_data *data, char *strv[])
 		ft_fatal("malloc");
 	sp->center = ft_strtovec(strv[1]);
 	sp->diameter = ft_atof(strv[2]);
+	if (sp->diameter < 0)
+		ft_error("init_obj_sphere: Invalid diameter");
 	obj->color = ft_strtocolor(strv[3]);
 	if (!ft_iscolor(obj->color))
-		ft_error("Invalid 'sphere' RGB");
+		ft_error("init_obj_sphere: Invalid RGB");
 	sp->radius = sp->diameter / 2;
 	obj->type = TYPE_SP;
 	obj->info = sp;

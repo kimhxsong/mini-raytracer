@@ -41,13 +41,10 @@ SRCS	=	$(addprefix src/ctype/,		ft_isalnum.c \
 
 SRCS	+=	$(addprefix src/io/,		ft_dputchar.c \
 										ft_dputendl.c \
-										ft_dputnbr.c \
 										ft_dputs.c \
 										ft_putchar.c \
 										ft_putendl.c \
-										ft_putnbr.c \
 										ft_puts.c)
-										# get_next_line.c)
 
 SRCS	+=	$(addprefix src/string/,	ft_bzero.c \
 										ft_memccpy.c \

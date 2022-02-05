@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 18:27:41 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/26 15:46:59 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/02/04 06:10:18 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 static void	parse_error(t_data *data, char *strv[])
 {
+	(void)data;
 	if (!strv || !*strv || **strv == '#')
 		return ;
-	ft_error("Invalid identifier");
+	ft_error("parse_error: Invalid identifier");
 }
 
 static int	get_id(char *id)
@@ -52,13 +53,12 @@ void	parse(int fd, t_data *data)
 {
 	char	*line;
 	char	**strv;
-	void	(*fp[7])(t_data *, char *[]);
 
 	if (fd < 0)
 		ft_fatal("open");
 	line = get_next_line(fd);
 	if (!line)
-		ft_error("Empty file");
+		ft_error("parse: Empty file");
 	while (line)
 	{
 		strv = ft_split(line, " \t\n");
@@ -68,6 +68,6 @@ void	parse(int fd, t_data *data)
 		line = get_next_line(fd);
 	}
 	if (!data->scene.count || !data->ambient.count || !data->light.count)
-		ft_error("One or more identifiers are not declared.");
+		ft_error("parse: One or more identifiers are not declared.");
 	close(fd);
 }

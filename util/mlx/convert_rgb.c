@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   convert_rgb.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 15:19:22 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/19 02:08:27 by yookim           ###   ########.fr       */
+/*   Updated: 2022/02/02 13:03:43 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftx.h"
 
-int		convert_rgb(t_color color)
+int	convert_rgb(t_color color)
 {
-	int t;
+	int	t;
 	int	r;
 	int	g;
 	int	b;

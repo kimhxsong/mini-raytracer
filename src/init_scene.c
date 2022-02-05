@@ -6,7 +6,7 @@
 /*   By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 14:11:56 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/28 18:22:09 by yookim           ###   ########.fr       */
+/*   Updated: 2022/02/05 17:36:52 by yookim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,13 @@
 
 static void	init_cam(t_cam *cam)
 {
-	cam->focal_len = 1.f;
-	cam->up.i = 0.f;
-	cam->up.j = 1.f;
-	cam->up.k = 0.f;
+	cam->up.j = 1.0f;
+	cam->focal_len = FOCAL_LEN;
+	if (cam->dir.j == 1.f || cam->dir.j == -1.f)
+	{
+		cam->up.j = 0.f;
+		cam->up.k = 1.f;
+	}
 	cam->basis_k = vec_cal_unit(vec_mult(cam->dir, -1));
 	cam->basis_i = vec_cal_unit(vec_cross(cam->up, cam->basis_k));
 	cam->basis_j = vec_cross(cam->basis_k, cam->basis_i);

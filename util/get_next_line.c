@@ -6,110 +6,118 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 17:36:06 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/26 15:43:56 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/02/03 17:43:34 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftx.h"
+#include <stdlib.h>
+#include <string.h>
 
-static char *ft_strdupnl(char *str)
+#ifndef BUFFER_SIZE
+# define BUFFER_SIZE 1024;
+#endif
+
+int	gnl_error(int fd, char buff[], char **ref_save)
 {
-	char	*new;
-	size_t	len;
-	int		i;
+	int	res;
 
-	len = ft_strlen(str);
-	new = (char *)malloc((len + 2) * sizeof(char));
-	i = -1;
-	while (++i < len)
-		new[i] = str[i];
-	new[i++] = '\n';
-	new[i] = '\0';
-	return (new);
-}
-
-static char	*ft_strjoinnl(char *str1, char *str2)
-{
-	char	*join;
-	char	*temp;
-
-	if (!str1 && !str2)
-		return (NULL);
-	if (!str1 && str2)
-		return (ft_strdupnl(str2));
-	if (str1 && !str2)
-		return (ft_strdupnl(str1));
-	join = (char *)malloc((strlen(str1) + ft_strlen(str2) + 2) * sizeof(char));
-	if (!join)
-		return (NULL);
-	temp = join;
-	while (*str1)
-		*temp++ = *str1++;
-	while (*str2)
-		*temp++ = *str2++;
-	*temp++ = '\n';
-	*temp = '\0';
-	return (join);
-}
-
-char	*get_next_line(int fd)
-{
-	static char	*save;
-	char		buff[BUFFER_SIZE + 1];
-	char		*temp;
-	char		*newline;
-	char		*lineptr;
-	int			res;
-
-	temp = save;
-	ft_memset(buff, 0, BUFFER_SIZE + 1);
 	if (fd >= 0)
 		res = read(fd, buff, BUFFER_SIZE);
 	if (fd < 0 || res < 0)
 	{
-		free(temp);
-		save = NULL;
-		return (NULL);
+		free(*ref_save);
+		*ref_save = NULL;
+		return (-1);
 	}
-	if (!res && !save)
-		return (NULL);
-	newline = NULL;
-	if (save)
-		newline = ft_strchr(save, '\n');
-	if (newline)
-	{
-		*newline = '\0';
-		lineptr = ft_strdupnl(save);
-		save = ft_strjoin(++newline, buff);
-		free(temp);
-		return (lineptr);
-	}
+	if (!res && !*ref_save)
+		return (-1);
+	return (0);
+}
+
+char	*gnl_from_save(char buff[], char **ref_save, char **ref_newline)
+{
+	char	*newline;
+	char	*lineptr;
+	char	*old_save;
+
+	newline = *ref_newline;
+	old_save = *ref_save;
+	*newline = '\0';
+	lineptr = ft_strdupnl(old_save);
+	*ref_save = ft_strjoin(++newline, buff);
+	free(old_save);
+	return (lineptr);
+}
+
+int	gnl_read_buff(int fd, char buff[], char **ref_save, char **ref_newline)
+{
+	char	*newline;
+	char	*old_save;
+	int		res;
+
 	newline = strchr(buff, '\n');
-	while (res && !newline)
+	res = 1;
+	while (!newline)
 	{
-		save = ft_strjoin(save, buff);
-		free(temp);
-		temp = save;
+		old_save = *ref_save;
+		*ref_save = ft_strjoin(old_save, buff);
+		free(old_save);
 		res = read(fd, buff, BUFFER_SIZE);
+		if (res <= 0)
+			break ;
 		newline = ft_strchr(buff, '\n');
 	}
 	if (res < 0)
 	{
-		free(temp);
-		save = NULL;
-		return (NULL);
+		free(*ref_save);
+		*ref_save = NULL;
+		return (-1);
 	}
+	*ref_newline = newline;
+	return (0);
+}
+
+char	*gnl_from_buff(char buff[], char **ref_save, char **ref_newline)
+{
+	char	*old_save;
+	char	*newline;
+	char	*lineptr;
+
+	old_save = *ref_save;
+	newline = *ref_newline;
 	if (newline)
 	{
 		*newline = '\0';
-		lineptr = ft_strjoinnl(save, buff);
-		save = ft_strdup(++newline);
+		lineptr = ft_strjoinnl(old_save, buff);
+		*ref_save = ft_strdup(++newline);
 	}
 	else
 	{
-		lineptr = ft_strdup(save);
-		save = NULL;
+		lineptr = ft_strdup(old_save);
+		*ref_save = NULL;
 	}
-	free(temp);
+	free(old_save);
 	return (lineptr);
+}
+
+char	*get_next_line(int fd)
+{
+	char		buff[BUFFER_SIZE + 1];
+	static char	*save;
+	char		*newline;
+
+	ft_memset(buff, 0, BUFFER_SIZE + 1);
+	if (gnl_error(fd, buff, &save) < 0)
+		return (NULL);
+	newline = NULL;
+	if (save)
+	{
+		newline = ft_strchr(save, '\n');
+		if (newline)
+			return (gnl_from_save(buff, &save, &newline));
+	}
+	if (gnl_read_buff(fd, buff, &save, &newline) < 0)
+		return (NULL);
+	return (gnl_from_buff(buff, &save, &newline));
 }

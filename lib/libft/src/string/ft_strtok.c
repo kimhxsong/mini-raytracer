@@ -6,7 +6,7 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:36:04 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/26 15:40:11 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/02/02 13:13:07 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ char	*ft_strpbrk(const char *s, const char *charset)
 
 char	*ft_strtok(const char *str, const char *sep)
 {
-	static char *save;
+	static char	*save;
 	char		*tok;
 	char		*brk;
 

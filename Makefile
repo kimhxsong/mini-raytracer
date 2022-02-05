@@ -3,20 +3,23 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yookim <yookim@student.42seoul.kr>         +#+  +:+       +#+         #
+#    By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/03 14:45:59 by hyeonsok          #+#    #+#              #
-#    Updated: 2022/01/28 12:55:40 by yookim           ###   ########.fr        #
+#    Updated: 2022/02/05 17:34:48 by hyeonsok         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc -g3
-# CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra
 
 INCLUDES = -I./include/ -I./lib/minilibx_opengl_20191021/ -I./lib/libft/include/
 MLX	= -lmlx -framework OpenGL -framework AppKit -L./lib/minilibx_opengl_20191021/
 FT = -lft -L./lib/libft
 LIBS = $(MLX) $(FT)
+
+LIBFT = lib/libft/libft.a
+LIBMLX = lib/minilibx_opengl_20191021/libmlx.a
 
 SRCDIR := ./src
 UTILDIR := ./util
@@ -49,64 +52,72 @@ OBJS	= $(addprefix $(OBJDIR)/, \
 			ft_isunitvec.o \
 			ft_isinscope.o \
 			ft_atof.o \
+			ft_strdupnl.o \
+			ft_strjoinnl.o \
 			mlx_img_pixel_put.o \
 			convert_rgb.o \
 			vec_calculate.o \
 			vec_operator.o \
 			draw.o \
-			hit.o \
-			light.o \
-			hit_cylinder.o\
-			hit_plane.o \
-			hit_sphere.o \
-			color_operator.o)
+			draw_utils.o \
+			draw_hit.o \
+			draw_light.o \
+			draw_hit_cylinder.o\
+			draw_hit_plane.o \
+			draw_hit_sphere.o \
+			color_utils.o)
 
 NAME = miniRT
+
+$(OBJDIR)/%.o : $(SRCDIR)/%.c
+			$(CC) $(INCLUDES) $(CFLAGS) -c $< -o $@
+
+$(OBJDIR)/%.o : $(UTILDIR)/%.c
+			$(CC) $(INCLUDES) $(CFLAGS) -c $< -o $@
+
+$(OBJDIR)/%.o : $(UTIL_MLX_DIR)/%.c
+			$(CC) $(INCLUDES) $(CFLAGS) -c $< -o $@
+
+$(OBJDIR)/%.o : $(UTIL_VEC_DIR)/%.c
+			$(CC) $(INCLUDES) $(CFLAGS) -c $< -o $@
+
+$(OBJDIR)/%.o : $(UTIL_COL_DIR)/%.c
+			$(CC) $(INCLUDES) $(CFLAGS) -c $< -o $@
 
 .PHONY:		all
 all:		libft mlx $(NAME)
 
 .PHONY:		libft
-libft:
-			@make -C ./lib/libft
+libft:		$(LIBFT)
+
 .PHONY:		mlx
-mlx:
-			@make -C ./lib/minilibx_opengl_20191021/
+mlx:		$(LIBMLX)
 
-$(OBJDIR)/%.o : $(SRCDIR)/%.c
-			@$(CC) $(INCLUDES) $(CFLAGS) -c $< -o $@
+$(NAME):	$(OBJS)
+			$(CC) $(INCLUDES) $(LIBS) $(OBJS) -o $(NAME)
 
-$(OBJDIR)/%.o : $(UTILDIR)/%.c
-			@$(CC) $(INCLUDES) $(CFLAGS) -c $< -o $@
+$(LIBFT):
+			make -C ./lib/libft
 
-$(OBJDIR)/%.o : $(UTIL_MLX_DIR)/%.c
-			@$(CC) $(INCLUDES) $(CFLAGS) -c $< -o $@
-
-$(OBJDIR)/%.o : $(UTIL_VEC_DIR)/%.c
-			@$(CC) $(INCLUDES) $(CFLAGS) -c $< -o $@
-
-$(OBJDIR)/%.o : $(UTIL_COL_DIR)/%.c
-			@$(CC) $(INCLUDES) $(CFLAGS) -c $< -o $@
-
-.PHONY:		NAME
-$(NAME):	$(OBJDIR) $(OBJS)
-			@$(CC) $(INCLUDES) $(LIBS) $(OBJS) -o $(NAME)
+$(LIBMLX):
+			make -C ./lib/minilibx_opengl_20191021/
 
 $(OBJS): | $(OBJDIR)
 $(OBJDIR):
-			@mkdir $(OBJDIR)
+			mkdir $(OBJDIR)
 
 .PHONY:		clean
 clean:
-			@$(RM) -r $(OBJDIR)
+			make clean -C ./lib/libft
+			$(RM) -r $(OBJDIR)
 
 .PHONY:		fclean
 fclean:		clean
-			@make clean -C ./lib/minilibx_opengl_20191021/
-			@make clean -C ./lib/libft
-			@$(RM) -r $(NAME)
+			make clean -C ./lib/minilibx_opengl_20191021/
+			make fclean -C ./lib/libft
+			$(RM) -r $(NAME)
 
 .PHONY:		re
 re:
-			@$(MAKE) fclean
-			@$(MAKE)
+			$(MAKE) fclean
+			$(MAKE)

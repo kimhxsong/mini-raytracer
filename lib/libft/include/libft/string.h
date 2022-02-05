@@ -6,12 +6,12 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 21:18:39 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/26 15:39:00 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/02/02 13:15:45 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_STRING_H
-# define LIBFT_STRING_H
+#ifndef STRING_H
+# define STRING_H
 
 # include <stddef.h>
 # include <stdlib.h>

@@ -6,11 +6,11 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 18:54:40 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/26 16:00:21 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/02/02 13:02:16 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_isinscope(double num, double max, double min)
+int	ft_isinscope(double num, double max, double min)
 {
 	return (num <= max && num >= min);
 }

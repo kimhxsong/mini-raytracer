@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_util.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 19:21:14 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/01/26 05:17:26 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/02/05 15:53:20 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	ft_isvecform(char *str)
 	int		count;
 
 	dup = ft_strdup(str);
+	if (!dup)
+		ft_fatal("malloc");
 	count = 3;
 	token = ft_strtok(dup, ",");
 	while (count > 0 && token)
@@ -36,10 +38,10 @@ int	ft_isvecform(char *str)
 
 int	ft_isfloatform(char *str)
 {
-	int	i;
-
+	if (ft_strlen(str) > 15)
+		return (0);
 	str += ft_issign(*str);
-	while (isdigit(*str))
+	while (ft_isdigit(*str))
 		++str;
 	str += *str == '.';
 	while (ft_isdigit(*str))
@@ -69,6 +71,8 @@ int	ft_iscolorform(char *str)
 	int		count;
 
 	dup = ft_strdup(str);
+	if (!dup)
+		ft_fatal("malloc");
 	count = 3;
 	token = ft_strtok(dup, ",\n");
 	while (count > 0 && token)
