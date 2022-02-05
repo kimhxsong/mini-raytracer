@@ -6,13 +6,14 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 14:42:29 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/02/03 16:59:45 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/02/05 19:41:37 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef  LIBFTX_H
 # define LIBFTX_H
 
+# include <stdio.h>
 # include "libft.h"
 # include "mlx.h"
 # include "color.h"

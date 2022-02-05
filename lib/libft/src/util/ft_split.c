@@ -6,7 +6,7 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 20:28:18 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/02/05 19:26:02 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/02/05 19:31:35 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ static int	get_count(const char *input, const char *sep)
 	while (*input)
 	{
 		++count;
-		input += strspn(input, sep);
-		input += strcspn(input, sep);
+		input += ft_strspn(input, sep);
+		input += ft_strcspn(input, sep);
 	}
 	return (count);
 }
@@ -44,19 +44,19 @@ static char	**fill_tokarr(const char *input, const char *sep, char **tokarr)
 
 	if (!tokarr)
 		return (NULL);
-	copy = strdup(input);
-	token = strtok(copy, sep);
+	copy = ft_strdup(input);
+	token = ft_strtok(copy, sep);
 	i = 0;
 	while (token)
 	{
-		tokarr[i] = strdup(token);
+		tokarr[i] = ft_strdup(token);
 		if (!tokarr[i])
 		{
 			cleanup_tokarr(tokarr, i);
 			tokarr = NULL;
 			break ;
 		}
-		token = strtok(NULL, sep);
+		token = ft_strtok(NULL, sep);
 		++i;
 	}
 	free(copy);
@@ -71,7 +71,7 @@ char	**init_tokarr(const char *input, const char *sep)
 	if (!input)
 		return (NULL);
 	count = get_count(input, sep);
-	tokarr = (char **)calloc(count + 1, sizeof(char *));
+	tokarr = (char **)ft_calloc(count + 1, sizeof(char *));
 	if (!tokarr)
 		return (NULL);
 	return (tokarr);

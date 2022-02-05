@@ -6,13 +6,11 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 17:36:06 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/02/03 17:43:34 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/02/05 19:40:13 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftx.h"
-#include <stdlib.h>
-#include <string.h>
 
 #ifndef BUFFER_SIZE
 # define BUFFER_SIZE 1024;
@@ -56,7 +54,7 @@ int	gnl_read_buff(int fd, char buff[], char **ref_save, char **ref_newline)
 	char	*old_save;
 	int		res;
 
-	newline = strchr(buff, '\n');
+	newline = ft_strchr(buff, '\n');
 	res = 1;
 	while (!newline)
 	{

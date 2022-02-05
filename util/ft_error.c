@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 14:34:45 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/02/04 05:52:36 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/02/05 19:38:40 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "libftx.h"
 
 void	ft_error(char *str)
 {

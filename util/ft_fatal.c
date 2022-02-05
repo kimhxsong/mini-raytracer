@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_fatal.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 12:13:01 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/02/04 05:52:46 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/02/05 19:38:06 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftx.h"
-#include <stdio.h>
 
 void	ft_fatal(const char *str)
 {

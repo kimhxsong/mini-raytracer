@@ -6,7 +6,7 @@
 /*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:36:04 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/02/05 19:09:03 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/02/05 19:32:54 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ size_t	ft_strspn(const char *s, const char *charset)
 	return (p - s);
 }
 
-size_t	ft_strcspn(const char *s, char *charset)
+size_t	ft_strcspn(const char *s, const char *charset)
 {
 	char	*p;
 

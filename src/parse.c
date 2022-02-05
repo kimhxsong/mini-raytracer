@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 18:27:41 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/02/04 06:10:18 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/02/05 19:36:43 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,17 @@ static int	get_id(char *id)
 {
 	if (!id || *id == '#')
 		return (SPEC_NO);
-	if (strcmp("A", id) == 0)
+	if (ft_strncmp("A", id, 1) == 0)
 		return (SPEC_A);
-	if (strcmp("C", id) == 0)
+	if (ft_strncmp("C", id, 1) == 0)
 		return (SPEC_C);
-	if (strcmp("L", id) == 0)
+	if (ft_strncmp("L", id, 1) == 0)
 		return (SPEC_L);
-	if (strcmp("pl", id) == 0)
+	if (ft_strncmp("pl", id, 2) == 0)
 		return (SPEC_PL);
-	if (strcmp("sp", id) == 0)
+	if (ft_strncmp("sp", id, 2) == 0)
 		return (SPEC_SP);
-	if (strcmp("cy", id) == 0)
+	if (ft_strncmp("cy", id, 2) == 0)
 		return (SPEC_CY);
 	return (SPEC_NO);
 }
