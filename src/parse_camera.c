@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_camera.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 13:37:12 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/02/04 06:04:42 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/02/05 15:52:54 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ static void	validate_camera(t_scene *scene, char *strv[])
 	int	isform;
 
 	if (scene->count++)
-		ft_error("validate_camera: More than once an uppercase identifier is declared");
+		ft_error("validate_camera: More than once an uppercase identifier is \
+			declared");
 	if (ft_strvlen(strv) != 4)
 		ft_error("validate_camera: Invalid description\n");
 	isform = ft_isvecform(strv[1]) && ft_isvecform(strv[2]) \

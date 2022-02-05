@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_util.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 19:21:14 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/02/04 05:48:03 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/02/05 15:53:20 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_isvecform(char *str)
 	int		count;
 
 	dup = ft_strdup(str);
-	if (!dup)	
+	if (!dup)
 		ft_fatal("malloc");
 	count = 3;
 	token = ft_strtok(dup, ",");
