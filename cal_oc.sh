@@ -12,18 +12,19 @@
 
 #!/bin/bash
 
-read -p "look from x,y,z: " -a lookfrom
-read -p "look at x,y,z: " -a lookat
-
 ## [[ string =~ regex ]]
 # The re-match operator performs regular expression matching of the string on 
 # its left to the right. If the left side matches the right side, the operator
 # returns a 0 and a 1 otherwise.
 
+read -p "look from x,y,z: " -a lookfrom
+
 ## Check the length of the array
 if [[ $((${#lookfrom[@]})) -ne 3 || $((${#lookat[@]})) -ne 3 ]]; then
 	printf "Error\n"; exit 1
 fi
+
+read -p "look at x,y,z: " -a lookat
 
 ## Check the format of a floating-point number
 for i in "${lookfrom[@]}"
