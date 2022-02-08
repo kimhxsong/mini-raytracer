@@ -3,37 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   parse_util.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonsok <hyeonsok@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeonsok <hyeonsok@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 19:21:14 by hyeonsok          #+#    #+#             */
-/*   Updated: 2022/02/05 15:53:20 by hyeonsok         ###   ########.fr       */
+/*   Updated: 2022/02/08 17:59:04 by hyeonsok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <string.h>
 #include "minirt.h"
 
+//TODO: Implement strsep then, Replace with ft_strsep
 int	ft_isvecform(char *str)
 {
-	char	*dup;
+	char	*strp;
+	char	*tofree;
 	char	*token;
 	int		count;
 
-	dup = ft_strdup(str);
-	if (!dup)
+	strp = ft_strdup(str);
+	if (!strp)
 		ft_fatal("malloc");
+	tofree = strp;
 	count = 3;
-	token = ft_strtok(dup, ",");
-	while (count > 0 && token)
+	while (count > 0)
 	{
+		token = strsep(&strp, ",");
+		if (token == NULL)
+			break ;
 		if (!ft_isfloatform(token))
 			break ;
-		--count;
-		token = ft_strtok(NULL, ",");
 	}
-	free(dup);
-	if (!count && !token)
-		return (1);
-	return (0);
+	free(tofree);
+	return (count == 0);
 }
 
 int	ft_isfloatform(char *str)
@@ -66,26 +68,26 @@ int	ft_isintform(char *str)
 
 int	ft_iscolorform(char *str)
 {
+	char	*strp;
+	char	*tofree;
 	char	*token;
-	char	*dup;
 	int		count;
 
-	dup = ft_strdup(str);
-	if (!dup)
+	strp = ft_strdup(str);
+	if (!strp)
 		ft_fatal("malloc");
+	tofree = strp;
 	count = 3;
-	token = ft_strtok(dup, ",\n");
-	while (count > 0 && token)
+	while (count > 0)
 	{
+		token = strsep(&strp, ",");
+		if (token == NULL)
+			break ;
 		if (!ft_isintform(token))
 			break ;
-		--count;
-		token = ft_strtok(NULL, ",\n");
 	}
-	free(dup);
-	if (!count && !token)
-		return (1);
-	return (0);
+	free(tofree);
+	return (count == 0);
 }
 
 void	add_object_front(t_obj **first_obj, t_obj *new)
